@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley's Practice Test 4</title>
+    <style>
+        .question {
+            margin-bottom: 1em;
+        }
+        .answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test #4</h1>
+    <form id="quiz-form">
+        <!-- The quiz questions will be generated here. -->
+    </form>
+    <button id="submit-button">Submit</button>
+    <script>
+
+        const quizData = [
+{
+    question: "121. Who was the conductor of the Underground Railroad, a network of secret routes and safe houses used to help slaves escape to freedom?",
+    options: [
+        "A. Harriet Tubman",
+        "B. Frederick Douglass",
+        "C. Sojourner Truth",
+        "D. Martin Luther King Jr.",
+        "E. Malcolm X"
+    ],
+    correctAnswer: "A",
+    explanation: "Harriet Tubman - Harriet Tubman was an American abolitionist and political activist who was born into slavery. She escaped and subsequently made some 13 missions to rescue approximately 70 enslaved people, including family and friends, using the network of antislavery activists and safe houses known as the Underground Railroad."
+},
+{
+    question: "122. Who were the Tuskegee Airmen?",
+    options: [
+        "A. A group of African-American soldiers who served during World War II",
+        "B. A group of African-American baseball players who played in the Negro Leagues",
+        "C. A group of African-American civil rights activists",
+        "D. A group of African-American jazz musicians",
+        "E. A group of African-American scientists"
+    ],
+    correctAnswer: "A",
+    explanation: "A group of African-American soldiers who served during World War II - The Tuskegee Airmen were a group of African-American pilots and support personnel who served in the United States Army Air Forces during World War II. They were the first African-American military aviators in the United States Armed Forces."
+},
+{
+    question: "123. What was the significance of the Los Angeles riots?",
+    options: [
+        "A. They marked the beginning of the Civil Rights Movement",
+        "B. They marked the end of the Civil Rights Movement",
+        "C. They were a response to the Rodney King verdict",
+        "D. They were a response to the O.J. Simpson verdict",
+        "E. They had no significant impact on race relations in the United States"
+    ],
+    correctAnswer: "C",
+    explanation: "They were a response to the Rodney King verdict - The Los Angeles riots were a series of riots and civil disturbances that occurred in Los Angeles, California, in 1992. The riots were sparked by the acquittal of police officers on trial for the use of excessive force in the arrest of Rodney King, an African-American man."
+},
+{
+    question: "124. What was Black Monday?",
+    options: [
+        "A. The stock market crash of October 19, 1987",
+        "B. The assassination of Martin Luther King Jr.",
+        "C. The impeachment of President Bill Clinton",
+        "D. The assassination of President John F. Kennedy",
+        "E. The signing of the Civil Rights Act of 1964"
+    ],
+    correctAnswer: "A",
+    explanation: "The stock market crash of October 19, 1987 - Black Monday is the name given to the stock market crash that occurred on October 19, 1987. On that day, the Dow Jones Industrial Average dropped 22.6%, the largest one-day percentage drop in the history of the stock market."
+},
+{
+    question: "125. What was the Three-Fifths Compromise?",
+    options: [
+        "A. It was a law that abolished slavery in the United States",
+        "B. It was a law that established the Electoral College",
+        "C. It was a law that granted citizenship to Native Americans",
+        "D. It was a law that allowed states to count slaves as three-fifths of a person for the purposes of representation in the House of Representatives",
+"E. It was a law that established the United States Supreme Court"
+],
+correctAnswer: "D",
+explanation: "It was a law that allowed states to count slaves as three-fifths of a person for the purposes of representation in the House of Representatives - The Three-Fifths Compromise was a compromise reached during the Constitutional Convention of 1787 in which slaves were counted as three-fifths of a person for the purposes of determining a state's representation in the House of Representatives and the Electoral College."
+},
+{
+    question: "126. What was the North American Free Trade Agreement (NAFTA)?",
+    options: [
+        "A. A trade agreement between the United States and China",
+        "B. A trade agreement between the United States and Japan",
+        "C. A trade agreement between the United States, Canada, and Mexico",
+        "D. A trade agreement between the United States and the European Union",
+        "E. A trade agreement between the United States and South Korea"
+    ],
+    correctAnswer: "C",
+    explanation: "A trade agreement between the United States, Canada, and Mexico - The North American Free Trade Agreement (NAFTA) is a trade agreement between the United States, Canada, and Mexico that went into effect on January 1, 1994. It eliminated most tariffs and other trade barriers between the three countries, and has had a significant impact on the economies of all three countries." 
+},
+{
+    question: "127. What were the Jim Crow laws?",
+    options: [
+        "A. Laws that abolished slavery in the United States",
+        "B. Laws that established the Electoral College",
+        "C. Laws that granted citizenship to Native Americans",
+        "D. Laws that enforced racial segregation in the southern United States",
+        "E. Laws that established the United States Supreme Court"
+    ],
+    correctAnswer: "D",
+    explanation: "Laws that enforced racial segregation in the southern United States - The Jim Crow laws were state and local laws in the southern United States that enforced racial segregation and discrimination against African Americans from the late 19th century until the 1960s. The laws mandated racial segregation in public facilities, such as schools, transportation, and restaurants, and denied African Americans their civil rights." 
+},
+{
+question: "128. What was the primary purpose of the 'don't ask, don't tell' policy in the US military?",
+options: [
+"A. To prevent discrimination based on race",
+"B. To allow women to serve in combat roles",
+"C. To prevent discrimination based on religion",
+"D. To allow service members to serve without disclosing their sexual orientation",
+"E. To prevent fraternization between officers and enlisted personnel"
+],
+correctAnswer: "D",
+explanation: "The 'don't ask, don't tell' policy allowed gay, lesbian, and bisexual individuals to serve in the US military without disclosing their sexual orientation, as long as they did not engage in homosexual acts or openly discuss their orientation."
+},
+
+{
+question: "129. Which of the following statements best describes the relationship between the US Postal Service and the Pony Express?",
+options: [
+"A. The Pony Express was a precursor to the US Postal Service",
+"B. The Pony Express was a competitor to the US Postal Service",
+"C. The US Postal Service contracted the Pony Express to deliver mail",
+"D. The Pony Express was a division within the US Postal Service",
+"E. The US Postal Service and the Pony Express were unrelated"
+],
+correctAnswer: "C",
+explanation: "The US Postal Service contracted the Pony Express to deliver mail. The Pony Express operated between April 1860 and October 1861, providing a faster mail delivery service across the western United States."
+},
+{
+    question: "130. What was the significance of Brown v. Board of Education?",
+    options: [
+        "A. It was a Supreme Court case that established the principle of judicial review",
+        "B. It was a Supreme Court case that established the principle of separate but equal",
+"C. It was a Supreme Court case that struck down the Civil Rights Act of 1866",
+"D. It was a Supreme Court case that overturned the doctrine of 'separate but equal' in public education",
+"E. It was a Supreme Court case that established the right to privacy"
+],
+correctAnswer: "D",
+explanation: "It was a Supreme Court case that overturned the doctrine of 'separate but equal' in public education - Brown v. Board of Education was a landmark Supreme Court case in which the Court declared that segregation in public schools was unconstitutional. The case overturned the doctrine of 'separate but equal,' which had been established in the Plessy v. Ferguson case of 1896. The decision was a major victory for the civil rights movement and helped to pave the way for further desegregation efforts."
+},
+{
+    question: "131. What was Sputnik?",
+    options: [
+        "A. A Soviet spy satellite",
+        "B. The first man-made satellite to orbit the Earth",
+        "C. The first American satellite to orbit the Earth",
+        "D. A Russian nuclear submarine",
+        "E. The first spacecraft to land on the Moon"
+    ],
+    correctAnswer: "B",
+    explanation: "The first man-made satellite to orbit the Earth - Sputnik was the first man-made satellite to be launched into orbit around the Earth. It was launched by the Soviet Union on October 4, 1957, and marked the beginning of the Space Age. The launch of Sputnik was a major Cold War victory for the Soviet Union and had a significant impact on the United States, which was caught off guard by the Soviet achievement." 
+},
+{
+    question: "132. Which three United States presidents were the targets of assassination attempts?",
+    options: [
+        "A. George Washington, John F. Kennedy, and Richard Nixon",
+        "B. Abraham Lincoln, John F. Kennedy, and Ronald Reagan",
+        "C. William McKinley, Franklin D. Roosevelt, and Gerald Ford",
+        "D. James A. Garfield, Harry S. Truman, and Lyndon B. Johnson",
+        "E. Ulysses S. Grant, Theodore Roosevelt, and Dwight D. Eisenhower"
+    ],
+    correctAnswer: "B",
+    explanation: "Abraham Lincoln, John F. Kennedy, and Ronald Reagan - Abraham Lincoln was assassinated by John Wilkes Booth in 1865, John F. Kennedy was assassinated by Lee Harvey Oswald in 1963, and Ronald Reagan was shot by John Hinckley Jr. in 1981. All three assassination attempts had a significant impact on the country and are remembered as tragic events in American history." 
+},
+{
+    question: "133. What was the 'military-industrial complex'?",
+    options: [
+        "A. The Soviet Union's military-industrial complex during the Cold War",
+        "B. A group of influential military leaders in the United States",
+        "C. The complex network of corporations and government agencies involved in the production of military hardware and technology",
+        "D. The propaganda machine that supported the United States military during the Cold War",
+        "E. A secret government program to develop new weapons technology"
+    ],
+    correctAnswer: "C",
+    explanation: "The complex network of corporations and government agencies involved in the production of military hardware and technology - The 'military-industrial complex' is a term used to describe the close relationship between the United States military and the corporations and government agencies involved in the production of military hardware and technology. The term was popularized by President Dwight D. Eisenhower in his farewell address in 1961, in which he warned of the dangers of the growing influence of the military-industrial complex on American society." 
+},
+{
+question: "134. Which city has never served as the capital of the United States?",
+options: [
+"A. New York City",
+"B. Philadelphia",
+"C. Washington, D.C.",
+"D. Baltimore",
+"E. Annapolis"
+],
+correctAnswer: "D",
+explanation: "Baltimore has never served as the capital of the United States. New York City, Philadelphia, Washington, D.C., and Annapolis have all served as the capital at different points in history."
+},
+{
+question: "135. What was the purpose of the Warren Commission?",
+options: [
+"A. To investigate the assassination of John F. Kennedy",
+"B. To investigate the assassination of Abraham Lincoln",
+"C. To investigate the Watergate scandal",
+"D. To investigate the Iran-Contra affair",
+"E. To investigate the impeachment of Richard Nixon"
+],
+correctAnswer: "A",
+explanation: "To investigate the assassination of John F. Kennedy - The Warren Commission was a group established by President Lyndon B. Johnson to investigate the assassination of President John F. Kennedy. The commission was headed by Chief Justice Earl Warren and included several prominent politicians and attorneys. The commission's report, which was released in 1964, concluded that Lee Harvey Oswald acted alone in assassinating President Kennedy, although this conclusion has been the subject of controversy and conspiracy theories ever since."
+},
+{
+    question: "136. Who was the first female African American mayor in Georgia?",
+    options: [
+        "A. Shirley Franklin",
+        "B. Keisha Lance Bottoms",
+        "C. Kasim Reed",
+        "D. Maynard Jackson",
+        "E. Toni Preckwinkle"
+    ],
+    correctAnswer: "A",
+    explanation: "Shirley Franklin - Shirley Franklin was the first female African American mayor of Atlanta, Georgia. She served as mayor from 2002 to 2010 and was known for her efforts to improve the city's infrastructure, expand public transportation, and promote economic development." 
+},
+{
+    question: "137. Which Georgia governor later became President of the United States?",
+    options: [
+        "A. Eugene Talmadge",
+        "B. Lester Maddox",
+        "C. Jimmy Carter",
+        "D. Zell Miller",
+        "E. Nathan Deal"
+    ],
+    correctAnswer: "C",
+    explanation: "Jimmy Carter - Jimmy Carter served as the 76th Governor of Georgia from 1971 to 1975, and later went on to serve as the 39th President of the United States from 1977 to 1981. He was awarded the Nobel Peace Prize in 2002 for his work in promoting peace and democracy around the world." 
+},
+{
+    question: "138. What is the name of the military base located in Columbus, Georgia?",
+    options: [
+        "A. Fort Benning",
+        "B. Fort Stewart",
+        "C. Robins Air Force Base",
+        "D. Moody Air Force Base",
+        "E. Kings Bay Naval Submarine Base"
+    ],
+    correctAnswer: "A",
+    explanation: "Fort Benning - Fort Benning is a United States Army post located near Columbus, Georgia. The base is named after Henry L. Benning, a Confederate general during the American Civil War." 
+},
+{
+    question: "139. Who is the longest-serving member of the United States Senate from Georgia?",
+    options: [
+        "A. Johnny Isakson",
+        "B. Saxby Chambliss",
+        "C. Herman Talmadge",
+        "D. Richard Russell Jr.",
+        "E. Sam Nunn"
+    ],
+    correctAnswer: "D",
+    explanation: "Richard Russell Jr. - Richard Russell Jr. served as a United States Senator from Georgia from 1933 until his death in 1971. He was a powerful figure in the Senate and played a key role in shaping American foreign policy during the Cold War." 
+},
+{
+    question: "140. What is the name of the military base located in Savannah, Georgia?",
+    options: [
+        "A. Fort Benning",
+        "B. Fort Stewart",
+        "C. Robins Air Force Base",
+        "D. Moody Air Force Base",
+        "E. Hunter Army Airfield"
+    ],
+    correctAnswer: "E",
+    explanation: "Hunter Army Airfield - Hunter Army Airfield is a United States Army post located in Savannah, Georgia. The base is home to the United States Army's 3rd Infantry Division and is named after Hunter Holmes McGuire, a Confederate general during the American Civil War." 
+},
+{
+    question: "141. What was the goal of the Freedom Riders?",
+    options: [
+        "A. To end segregation in interstate transportation",
+        "B. To protest the Vietnam War",
+        "C. To advocate for Native American rights",
+        "D. To fight for women's suffrage",
+        "E. To promote civil rights for LGBTQ+ individuals"
+    ],
+    correctAnswer: "A",
+    explanation: "To end segregation in interstate transportation - The Freedom Riders were a group of activists who rode buses into the segregated Southern United States in 1961 to challenge the non-enforcement of the United States Supreme Court decisions Morgan v. Virginia (1946) and Boynton v. Virginia (1960), which ruled that segregated public buses were unconstitutional. They were met with violence and arrests, but their efforts helped to bring national attention to the issue of segregation." 
+},
+{
+question: "142. Which event is considered the turning point of the American Revolutionary War?",
+options: [
+"A. Battle of Saratoga",
+"B. Battle of Lexington and Concord",
+"C. Battle of Yorktown",
+"D. Battle of Bunker Hill",
+"E. Battle of Trenton"
+],
+correctAnswer: "A",
+explanation: "The Battle of Saratoga - The American victory in the Battle of Saratoga in 1777 marked a turning point in the Revolutionary War, as it convinced France to support the American cause."
+},
+{
+    question: "143. Who was the first African American to serve in the United States Senate?",
+    options: [
+        "A. Thurgood Marshall",
+        "B. Booker T. Washington",
+        "C. Frederick Douglass",
+        "D. Hiram Revels",
+        "E. Robert Smalls"
+    ],
+    correctAnswer: "D",
+    explanation: "Hiram Revels - Hiram Revels was a Republican Senator from Mississippi who served in the United States Senate from 1870 to 1871. He was the first African American to serve in the United States Senate." 
+},
+{
+    question: "144. What was the purpose of the Voting Rights Act of 1965?",
+    options: [
+        "A. To abolish slavery in the United States",
+        "B. To give women the right to vote",
+        "C. To protect the voting rights of African Americans",
+        "D. To lower the voting age to 18",
+        "E. To allow for the use of mail-in voting"
+    ],
+    correctAnswer: "C",
+    explanation: "To protect the voting rights of African Americans - The Voting Rights Act of 1965 is a landmark piece of federal legislation in the United States that prohibits racial discrimination in voting. It was signed into law by President Lyndon B. Johnson and aimed to overcome legal barriers at the state and local levels that prevented African Americans from exercising their right to vote under the 15th Amendment to the Constitution." 
+},
+{
+    question: "145. Who was the founder of the American Red Cross?",
+    options: [
+        "A. Dorothea Dix",
+        "B. Clara Barton",
+        "C. Florence Nightingale",
+        "D. Harriet Tubman",
+        "E. Susan B. Anthony"
+    ],
+    correctAnswer: "B",
+    explanation: "Clara Barton - Clara Barton was an American nurse, teacher, and founder of the American Red Cross. She played a key role in the organization's establishment and served as its first president."
+},
+{
+    question: "146. What is the Bill of Rights?",
+    options: [
+        "A. The first ten amendments to the United States Constitution",
+        "B. A list of rights guaranteed to all citizens of the world",
+        "C. A document outlining the basic principles of democracy",
+        "D. The preamble to the United States Constitution",
+        "E. The first article of the United States Constitution"
+    ],
+    correctAnswer: "A",
+    explanation: "The first ten amendments to the United States Constitution - The Bill of Rights is a document that outlines the basic rights and protections afforded to United States citizens. It was added to the Constitution in 1791 and includes provisions such as the freedom of speech, religion, and the press, as well as the right to bear arms and a fair trial." 
+},
+{
+    question: "147. What is the Georgia Constitution?",
+    options: [
+        "A. A document that outlines the basic principles of the United States government",
+        "B. A list of rights guaranteed to all Georgia citizens",
+        "C. The state constitution of Georgia",
+        "D. The preamble to the United States Constitution",
+        "E. The first article of the United States Constitution"
+    ],
+    correctAnswer: "C",
+    explanation: "The state constitution of Georgia - The Georgia Constitution is the governing document of the U.S. state of Georgia. It outlines the powers and structure of the state government, as well as the basic rights and protections afforded to Georgia citizens." 
+},
+{
+    question: "148. Which amendment to the United States Constitution guarantees freedom of speech?",
+    options: [
+        "A. First Amendment",
+        "B. Second Amendment",
+        "C. Third Amendment",
+        "D. Fourth Amendment",
+        "E. Fifth Amendment"
+    ],
+    correctAnswer: "A",
+    explanation: "First Amendment - The First Amendment to the United States Constitution guarantees freedom of speech, religion, and the press, as well as the right to assemble and petition the government." 
+},
+{
+    question: "149. Which amendment to the United States Constitution prohibits the government from conducting unreasonable searches and seizures?",
+    options: [
+        "A. First Amendment",
+        "B. Second Amendment",
+        "C. Third Amendment",
+        "D. Fourth Amendment",
+        "E. Fifth Amendment"
+    ],
+    correctAnswer: "D",
+    explanation: "Fourth Amendment - The Fourth Amendment to the United States Constitution prohibits the government from conducting unreasonable searches and seizures and requires any warrant to be judicially sanctioned and supported by probable cause." 
+},
+{
+    question: "150. Which article of the Georgia Constitution establishes the state's legislative branch?",
+    options: [
+        "A. Article I",
+        "B. Article II",
+        "C. Article III",
+        "D. Article IV",
+        "E. Article V"
+    ],
+    correctAnswer: "B",
+    explanation: "Article II - Article II of the Georgia Constitution establishes the legislative branch of the state government and outlines the powers and structure of the Georgia General Assembly." 
+},
+{
+    question: "151. Who was the founder of the Georgia colony?",
+    options: [
+        "A. James Oglethorpe",
+        "B. John Smith",
+        "C. Christopher Columbus",
+        "D. Sir Walter Raleigh",
+        "E. Hernando de Soto"
+    ],
+    correctAnswer: "A",
+    explanation: "James Oglethorpe - James Oglethorpe was a British general and philanthropist who founded the Georgia colony in 1733 as a haven for debtors and other persecuted individuals." 
+},
+{
+    question: "152. What was the purpose of the Trail of Tears?",
+    options: [
+        "A. To commemorate the Cherokee Nation's forced relocation from Georgia to Oklahoma",
+        "B. To celebrate the opening of a new trade route through the southeastern United States",
+        "C. To provide a scenic route for tourists through the Appalachian Mountains",
+        "D. To relocate Native American tribes to reservations in the western United States",
+        "E. To commemorate the end of the Civil War and the reunification of the United States"
+    ],
+    correctAnswer: "D",
+    explanation: "To relocate Native American tribes to reservations in the western United States - The Trail of Tears was a forced relocation of Native American tribes from the southeastern United States to Indian Territory (present-day Oklahoma) in the 1830s, as part of the federal government's policy of Indian removal." 
+},
+{
+    question: "153. Who was the first African American mayor of Atlanta?",
+    options: [
+        "A. Martin Luther King Jr.",
+        "B. Maynard Jackson",
+        "C. Andrew Young",
+        "D. Herman Talmadge",
+        "E. Jimmy Carter"
+    ],
+    correctAnswer: "B",
+    explanation: "Maynard Jackson - Maynard Jackson was the first African American mayor of Atlanta, serving from 1974 to 1982 and again from 1990 to 1994." 
+},
+{
+    question: "154. What was the significance of the Battle of Kennesaw Mountain?",
+    options: [
+        "A. It marked the beginning of the Atlanta Campaign during the Civil War",
+        "B. It was the last major battle of the Civil War",
+        "C. It was the site of the signing of the Emancipation Proclamation",
+        "D. It was the turning point of the Revolutionary War",
+        "E. It was the site of the first gold rush in Georgia"
+    ],
+    correctAnswer: "A",
+    explanation: "It marked the beginning of the Atlanta Campaign during the Civil War - The Battle of Kennesaw Mountain was fought on June 27, 1864, during the American Civil War. It marked the beginning of the Atlanta Campaign, a series of battles and maneuvers that ultimately led to the capture of Atlanta by Union forces." 
+},
+{
+    question: "155. Who was the first woman to serve as governor of Georgia?",
+    options: [
+        "A. Karen Handel",
+        "B. Sarah Palin",
+        "C. Nancy Grace",
+        "D. Sonny Perdue",
+        "E. Rebecca Felton"
+    ],
+    correctAnswer: "A",
+    explanation: "Karen Handel - Karen Handel served as the 77th governor of Georgia from 2009 to 2011, becoming the first woman to hold the position." 
+},
+{
+    question: "156. Which amendment to the U.S. Constitution guarantees freedom of religion?",
+    options: [
+        "A. First Amendment",
+        "B. Second Amendment",
+        "C. Fourth Amendment",
+        "D. Tenth Amendment",
+        "E. Thirteenth Amendment"
+    ],
+    correctAnswer: "A",
+    explanation: "First Amendment - The First Amendment to the U.S. Constitution guarantees freedom of religion, among other rights such as freedom of speech, freedom of the press, and the right to assemble." 
+},
+{
+    question: "157. Which religious group founded Pennsylvania?",
+    options: [
+        "A. Baptists",
+        "B. Catholics",
+        "C. Quakers",
+        "D. Methodists",
+        "E. Puritans"
+    ],
+    correctAnswer: "C",
+    explanation: "Quakers - Pennsylvania was founded in 1681 by William Penn as a haven for Quakers, who faced persecution in England and other colonies." 
+},
+{
+    question: "158. Which of the Founding Fathers was a Deist?",
+    options: [
+        "A. George Washington",
+        "B. Thomas Jefferson",
+        "C. John Adams",
+        "D. Benjamin Franklin",
+        "E. Alexander Hamilton"
+    ],
+    correctAnswer: "B",
+    explanation: "Thomas Jefferson - Thomas Jefferson was a Deist, which means he believed in a higher power but rejected traditional Christian doctrines such as the divinity of Jesus and the authority of the Bible." 
+},
+{
+    question: "159. Which religious group was banished from Massachusetts in the 17th century?",
+    options: [
+        "A. Catholics",
+        "B. Baptists",
+        "C. Quakers",
+        "D. Puritans",
+        "E. Methodists"
+    ],
+    correctAnswer: "C",
+    explanation: "Quakers - In the 17th century, Quakers were banished from Massachusetts and other colonies due to their beliefs and practices, which included a rejection of the authority of ministers and an emphasis on individual spiritual experience." 
+},
+{
+    question: "160. Which president signed the Religious Freedom Restoration Act into law?",
+    options: [
+        "A. Ronald Reagan",
+        "B. Bill Clinton",
+        "C. George W. Bush",
+        "D. Barack Obama",
+        "E. Donald Trump"
+    ],
+    correctAnswer: "B",
+    explanation: "Bill Clinton - The Religious Freedom Restoration Act was signed into law by President Bill Clinton in 1993. The law aims to protect individuals and religious organizations from government interference in their religious practices." 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ]
+
+        function generateQuiz() {
+            const quizForm = document.getElementById('quiz-form');
+            quizData.forEach(function (item, index) {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.dataset.correct = item.correctAnswer;
+
+                const questionText = document.createElement('p');
+                questionText.textContent = item.question;
+                questionDiv.appendChild(questionText);
+
+                item.options.forEach(function (option) {
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = 'q' + (index + 1);
+                    radioButton.value = option.charAt(0);
+                    questionDiv.appendChild(radioButton);
+
+                    const label = document.createElement('label');
+                    label.textContent = option;
+                    questionDiv.appendChild(label);
+
+                    const lineBreak = document.createElement('br');
+                    questionDiv.appendChild(lineBreak);
+                });
+
+                const answerElement = document.createElement('p');
+                answerElement.className = 'answer';
+                answerElement.textContent = 'Answer: ' + item.correctAnswer + '. ' + item.explanation;
+                questionDiv.appendChild(answerElement);
+
+                quizForm.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('submit-button').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.correct;
+                const userAnswer = question.querySelector(`input[name^="q"]:checked`);
+                const answerElement = question.querySelector('.answer');
+
+                if (userAnswer && userAnswer.value === correctAnswer) {
+                    answerElement.style.color = 'green';
+                    answerElement.innerHTML = 'Correct! ' + answerElement.innerHTML;
+                } else if (userAnswer) {
+                    answerElement.style.color = 'red';
+                    answerElement.innerHTML = 'Incorrect. ' + answerElement.innerHTML;
+                } else {
+                    answerElement.style.color = 'black';
+                }
+
+                answerElement.style.display = 'block';
+            });
+        });
+
+        generateQuiz();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley's Practice Test 5</title>
+    <style>
+        .question {
+            margin-bottom: 1em;
+        }
+        .answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test #5</h1>
+    <form id="quiz-form">
+        <!-- The quiz questions will be generated here. -->
+    </form>
+    <button id="submit-button">Submit</button>
+    <script>
+
+        const quizData = [
+{
+    question: "161. Which amendment to the U.S. Constitution guarantees the right to bear arms?",
+    options: [
+        "A. First Amendment",
+        "B. Second Amendment",
+        "C. Fourth Amendment",
+        "D. Tenth Amendment",
+        "E. Thirteenth Amendment"
+    ],
+    correctAnswer: "B",
+    explanation: "Second Amendment - The Second Amendment to the U.S. Constitution guarantees the right to bear arms, which has been the subject of much debate and controversy in American history." 
+},
+{
+    question: "162. Who was the president of the United States during the start of the Great Depression?",
+    options: [
+        "A. Herbert Hoover",
+        "B. Franklin D. Roosevelt",
+        "C. Harry S. Truman",
+        "D. Dwight D. Eisenhower",
+        "E. John F. Kennedy"
+    ],
+    correctAnswer: "A",
+    explanation: "Herbert Hoover - Herbert Hoover was the president of the United States from 1929 to 1933, during which time the Great Depression began." 
+},
+{
+    question: "163. Which battle is considered the turning point of the Civil War?",
+    options: [
+        "A. First Battle of Bull Run",
+        "B. Battle of Antietam",
+        "C. Battle of Gettysburg",
+        "D. Siege of Vicksburg",
+        "E. Battle of Chickamauga"
+    ],
+    correctAnswer: "C",
+    explanation: "Battle of Gettysburg - The Battle of Gettysburg, which took place in July 1863, is considered the turning point of the Civil War because it marked the farthest advance of Confederate forces into Northern territory and ultimately ended in a Union victory." 
+},
+{
+    question: "164. Who invented the first practical electric light bulb?",
+    options: [
+        "A. Thomas Edison",
+        "B. Nikola Tesla",
+        "C. George Westinghouse",
+        "D. Benjamin Franklin",
+        "E. Alexander Graham Bell"
+    ],
+    correctAnswer: "A",
+    explanation: "Thomas Edison - Thomas Edison invented the first practical electric light bulb in 1879, which revolutionized the way people lived and worked by allowing for electric lighting in homes and businesses." 
+},
+{
+    question: "165. Which militia group was involved in the 1995 Oklahoma City bombing?",
+    options: [
+        "A. The Minutemen",
+        "B. The Oath Keepers",
+        "C. The Michigan Militia",
+        "D. The Patriot Movement",
+        "E. The Three Percenters"
+    ],
+    correctAnswer: "C",
+    explanation: "The Michigan Militia - The 1995 Oklahoma City bombing was carried out by Timothy McVeigh, who had ties to the Michigan Militia and other militia groups. The bombing killed 168 people and injured hundreds more." 
+},
+{
+question: "166. What unique feature does the University of Georgia at Athens have in its history?",
+options: [
+"A. It was the first state-chartered university in the United States",
+"B. It was the first university to admit African American students",
+"C. It was the first university to offer a degree in computer science",
+"D. It was the first university to have a women's sports team",
+"E. It was the first university to have a veterinary school"
+],
+correctAnswer: "A",
+explanation: "The University of Georgia at Athens was the first state-chartered university in the United States, receiving its charter in 1785. This makes it the oldest public university in the country."
+},
+
+{
+  question: "167. What role did the city of Savannah, Georgia, play in the American Revolution?",
+  options: [
+    "A. It was the site of a major naval battle",
+    "B. It was the headquarters for the Continental Congress",
+    "C. It was a major center for British Loyalist support",
+    "D. It was captured by British forces in 1778",
+    "E. It served as a training ground for the Continental Army"
+  ],
+  correctAnswer: "D",
+  explanation: "Savannah, Georgia was captured by British forces in 1778 during the American Revolution. The British held the city until 1782, when it was returned to American control."
+},
+{
+  question: "168. Which American general played a crucial role in the Battle of New Orleans during the War of 1812?",
+  options: [
+    "A. Ulysses S. Grant",
+    "B. George Washington",
+    "C. Robert E. Lee",
+    "D. William Tecumseh Sherman",
+    "E. Andrew Jackson"
+  ],
+  correctAnswer: "E",
+  explanation: "Andrew Jackson played a crucial role in the Battle of New Orleans during the War of 1812. He led American forces to a decisive victory against the British, which helped to propel him to national prominence."
+},
+{
+  question: "169. Which of the following was a significant consequence of the Spanish-American War?",
+  options: [
+    "A. The United States acquired Puerto Rico and Guam",
+    "B. The United States gained control over the Panama Canal Zone",
+    "C. The United States annexed the Philippines",
+    "D. Both A and B",
+    "E. Both A and C"
+  ],
+  correctAnswer: "E",
+  explanation: "As a result of the Spanish-American War, the United States acquired Puerto Rico, Guam, and the Philippines. While the United States did eventually gain control over the Panama Canal Zone, it was not a direct consequence of the Spanish-American War."
+},
+{
+  question: "170. Which military conflict was a major contributing factor to the end of the draft in the United States?",
+  options: [
+    "A. World War II",
+    "B. Korean War",
+    "C. Vietnam War",
+    "D. Gulf War",
+    "E. War in Afghanistan"
+  ],
+  correctAnswer: "C",
+  explanation: "The Vietnam War was a major contributing factor to the end of the draft in the United States. Widespread opposition to the war and the draft led to the establishment of an all-volunteer military force in 1973."
+},
+{
+  question: "171. Which US military operation, beginning in 2001, was a direct response to the September 11 terrorist attacks?",
+  options: [
+    "A. Operation Desert Storm",
+    "B. Operation Iraqi Freedom",
+    "C. Operation Enduring Freedom",
+    "D. Operation Just Cause",
+    "E. Operation Restore Hope"
+  ],
+  correctAnswer: "C",
+  explanation: "Operation Enduring Freedom, which began in 2001, was the US-led military campaign in Afghanistan in response to the September 11 terrorist attacks. Its main objectives were to dismantle the Al-Qaeda terrorist network and remove the Taliban regime from power."
+},
+{
+  question: "172. What was the main objective of the Allied forces during the D-Day invasion in World War II?",
+  options: [
+    "A. To capture Berlin",
+    "B. To establish a western front in Europe",
+    "C. To defeat the Japanese forces in the Pacific",
+    "D. To liberate concentration camps",
+    "E. To force Italy to surrender"
+  ],
+  correctAnswer: "B",
+  explanation: "The main objective of the Allied forces during the D-Day invasion was to establish a western front in Europe. This would allow the Allies to launch a major offensive against Nazi Germany and ultimately lead to the end of World War II in Europe."
+},
+{
+  question: "173. Why did the United States decide to intervene in the Korean War?",
+  options: [
+    "A. To prevent the spread of communism",
+    "B. To protect American economic interests in the region",
+    "C. To avenge the attack on Pearl Harbor",
+    "D. To protect South Korea from a Chinese invasion",
+    "E. To challenge Soviet influence in Asia"
+  ],
+  correctAnswer: "A",
+  explanation: "The primary reason for the United States' intervention in the Korean War was to prevent the spread of communism. The US saw the invasion of South Korea by communist North Korea as a direct threat to its policy of containing communism and therefore decided to intervene on behalf of South Korea."
+},
+{
+  question: "174. What was the result of the Korean War?",
+  options: [
+    "A. The Korean Peninsula was reunified under a democratic government",
+    "B. The Korean Peninsula was reunified under a communist government",
+    "C. The Korean Peninsula remained divided along the 38th parallel",
+    "D. The United States established a permanent military presence in South Korea",
+    "E. North Korea became a satellite state of the Soviet Union"
+  ],
+  correctAnswer: "C",
+  explanation: "The Korean War ended with an armistice agreement in 1953, and the Korean Peninsula remained divided along the 38th parallel. This division remains in place today, with North Korea and South Korea separated by the heavily fortified Korean Demilitarized Zone (DMZ)."
+},
+{
+  question: "175. Which event is considered the beginning of the Civil Rights Movement in the United States?",
+  options: [
+    "A. The Montgomery Bus Boycott",
+    "B. The Brown v. Board of Education decision",
+    "C. The Greensboro sit-ins",
+    "D. The passage of the Civil Rights Act of 1964",
+    "E. The March on Washington for Jobs and Freedom"
+  ],
+  correctAnswer: "B",
+  explanation: "The Brown v. Board of Education Supreme Court decision in 1954, which declared racial segregation in public schools unconstitutional, is considered the beginning of the Civil Rights Movement in the United States. This landmark decision laid the groundwork for the broader struggle for racial equality and social justice."
+},
+{
+question: "176. Which legislation is responsible for preventing gender-based discrimination in educational programs and activities?",
+options: [
+"A. The Equal Pay Act",
+"B. The Civil Rights Act of 1964",
+"C. Title IX of the Education Amendments Act",
+"D. The Americans with Disabilities Act",
+"E. The Fair Housing Act"
+],
+correctAnswer: "C",
+explanation: "Title IX of the Education Amendments Act of 1972 prohibits gender-based discrimination in any educational program or activity that receives federal financial assistance. This legislation has played a significant role in promoting gender equity in education and sports."
+},
+{
+question: "177. Which of the following achievements is Benjamin Franklin best known for?",
+options: [
+"A. Inventing the cotton gin",
+"B. Conducting experiments on electricity",
+"C. Writing the Declaration of Independence",
+"D. Serving as the first Chief Justice of the United States",
+"E. Leading the Continental Army during the American Revolution"
+],
+correctAnswer: "B",
+explanation: "Benjamin Franklin is best known for conducting experiments on electricity and inventing the lightning rod. Although he played various roles in American history, his scientific achievements, inventions, and contributions to the understanding of electricity are among his most famous accomplishments."
+},
+{
+question: "178. Who were the main adversaries of the United States during World War II?",
+options: [
+"A. Germany, Italy, and Japan",
+"B. Germany, Austria-Hungary, and the Ottoman Empire",
+"C. Soviet Union, China, and North Korea",
+"D. North Vietnam, China, and the Soviet Union",
+"E. Iraq, Iran, and Afghanistan"
+],
+correctAnswer: "A",
+explanation: "During World War II, the United States fought against the Axis Powers, which consisted primarily of Germany, Italy, and Japan. These countries sought to expand their territories and influence at the expense of other nations, leading to a global conflict."
+},
+{
+question: "179. In the Vietnam War, the United States fought against which of the following?",
+options: [
+"A. North Vietnam and Viet Cong",
+"B. South Vietnam and Viet Cong",
+"C. China and North Korea",
+"D. The Soviet Union and China",
+"E. The Khmer Rouge and Pathet Lao"
+],
+correctAnswer: "A",
+explanation: "During the Vietnam War, the United States fought against North Vietnam and the Viet Cong, a communist guerrilla group that operated in South Vietnam. The United States supported South Vietnam in an effort to prevent the spread of communism in Southeast Asia."
+},
+{
+question: "180. Which United States president signed the Voting Rights Act into law?",
+options: [
+"A. John F. Kennedy",
+"B. Lyndon B. Johnson",
+"C. Richard Nixon",
+"D. Gerald Ford",
+"E. Jimmy Carter"
+],
+correctAnswer: "B",
+explanation: "President Lyndon B. Johnson signed the Voting Rights Act into law on August 6, 1965. The Act aimed to eliminate racial discrimination in voting and has been a critical piece of civil rights legislation in the United States."
+},
+{
+question: "181. Which United States President implemented the New Deal?",
+options: [
+"A. Franklin D. Roosevelt",
+"B. Herbert Hoover",
+"C. Harry S. Truman",
+"D. Woodrow Wilson",
+"E. Theodore Roosevelt"
+],
+correctAnswer: "A",
+explanation: "President Franklin D. Roosevelt implemented the New Deal in response to the Great Depression. The New Deal was a series of programs and policies designed to provide relief, recovery, and reform to the American economy and society."
+},
+{
+question: "182. How was Franklin D. Roosevelt able to serve more than two terms as President of the United States?",
+options: [
+"A. The 22nd Amendment had not yet been ratified",
+"B. Congress granted him an exception",
+"C. He ignored the two-term tradition",
+"D. The Supreme Court ruled in his favor",
+"E. The two-term limit did not apply during wartime"
+],
+correctAnswer: "A",
+explanation: "Franklin D. Roosevelt was able to serve more than two terms as President of the United States because the 22nd Amendment, which established the two-term limit, had not yet been ratified. Roosevelt was elected to four terms, serving from 1933 until his death in 1945."
+},
+{
+question: "183. What significant achievement is associated with President Jimmy Carter?",
+options: [
+"A. The Camp David Accords",
+"B. The New Deal",
+"C. The moon landing",
+"D. The end of the Vietnam War",
+"E. The building of the Panama Canal"
+],
+correctAnswer: "A",
+explanation: "President Jimmy Carter is best known for his role in the Camp David Accords, which were signed in 1978. The Accords facilitated a peace treaty between Egypt and Israel, marking a significant diplomatic achievement in the Middle East."
+},
+{
+question: "184. What was the primary goal of the United States Space Shuttle program?",
+options: [
+"A. To land astronauts on the Moon",
+"B. To build a space station in Earth's orbit",
+"C. To explore Mars and other planets",
+"D. To provide reusable transportation to and from space",
+"E. To conduct scientific experiments in microgravity"
+],
+correctAnswer: "D",
+explanation: "The primary goal of the United States Space Shuttle program was to provide reusable transportation to and from space. The Space Shuttle was designed to be a versatile, reusable spacecraft that could carry out various missions, including satellite deployment, servicing the International Space Station, and conducting scientific research."
+},
+{
+question: "185. What did the Indian Removal Act of 1830 lead to?",
+options: [
+"A. The forced relocation of Native American tribes",
+"B. The creation of reservations for Native Americans",
+"C. The end of the Indian Wars",
+"D. The granting of citizenship to Native Americans",
+"E. The establishment of the Bureau of Indian Affairs"
+],
+correctAnswer: "A",
+explanation: "The Indian Removal Act of 1830, signed by President Andrew Jackson, led to the forced relocation of Native American tribes living in the southeastern United States. This removal resulted in the infamous Trail of Tears, during which thousands of Native Americans died."
+},
+{
+question: "186. What was the primary cause of the Watts Riots in Los Angeles in 1965?",
+options: [
+"A. Racial tensions and police brutality",
+"B. Economic inequality and unemployment",
+"C. Opposition to the Vietnam War",
+"D. Disputes over land and housing",
+"E. Conflict between rival street gangs"
+],
+correctAnswer: "A",
+explanation: "The primary cause of the Watts Riots in Los Angeles in 1965 was racial tensions and police brutality. The riots began after the arrest of a young African American man for suspicion of drunk driving, which led to a confrontation between the police and members of the community. The incident ignited underlying racial tensions and frustrations, resulting in a six-day riot that caused extensive property damage and the loss of lives."
+},
+{
+question: "187. What was a major goal of labor unions at the turn of the 20th century?",
+options: [
+"A. The establishment of a minimum wage",
+"B. The abolition of child labor",
+"C. The right to collective bargaining",
+"D. The establishment of a 40-hour workweek",
+"E. All of the above"
+],
+correctAnswer: "E",
+explanation: "At the turn of the 20th century, labor unions pursued various goals, including the establishment of a minimum wage, the abolition of child labor, the right to collective bargaining, and the establishment of a 40-hour workweek. Unions played a crucial role in advocating for workers' rights and improving working conditions during the Industrial Revolution."
+},
+{
+question: "188. Which two companies played a significant role in the construction of the First Transcontinental Railroad in the United States?",
+options: [
+"A. Union Pacific Railroad and Central Pacific Railroad",
+"B. Santa Fe Railroad and Southern Pacific Railroad",
+"C. Pennsylvania Railroad and New York Central Railroad",
+"D. Atchison, Topeka and Santa Fe Railway and Great Northern Railway",
+"E. Baltimore and Ohio Railroad and Western Pacific Railroad"
+],
+correctAnswer: "A",
+explanation: "The First Transcontinental Railroad in the United States was constructed by two companies, the Union Pacific Railroad and the Central Pacific Railroad. The Union Pacific Railroad built westward from Omaha, Nebraska, while the Central Pacific Railroad built eastward from Sacramento, California. The two lines met at Promontory Summit, Utah, in 1869, completing the transcontinental connection."
+},
+{
+question: "189. What was the primary reason for increased immigration to the United States at the turn of the 20th century?",
+options: [
+"A. The promise of religious freedom",
+"B. The opportunity for political asylum",
+"C. The availability of land through the Homestead Act",
+"D. The demand for workers during the Industrial Revolution",
+"E. The establishment of the United States as a global power"
+],
+correctAnswer: "D",
+explanation: "The primary reason for increased immigration to the United States at the turn of the 20th century was the demand for workers during the Industrial Revolution. The rapid industrialization of the United States created job opportunities, attracting millions of immigrants from around the world seeking better economic opportunities and improved living conditions."
+},
+{
+question: "190. Which movement aimed to improve living conditions for the urban poor in the late 19th and early 20th centuries?",
+options: [
+"A. The Progressive Movement",
+"B. The Populist Movement",
+"C. The Temperance Movement",
+"D. The Abolitionist Movement",
+"E. The Women's Suffrage Movement"
+],
+correctAnswer: "A",
+explanation: "The Progressive Movement, which spanned from the 1890s to the 1920s, aimed to improve living conditions for the urban poor in the late 19th and early 20th centuries. Progressives sought social and political reforms, including better working conditions, public health improvements, and stronger regulations on big businesses. They also focused on addressing issues like poverty, corruption, and social injustice."
+},
+{
+question: "191. What was the primary purpose of the Constitutional Convention held in 1787?",
+options: [
+"A. To declare independence from Britain",
+"B. To draft the Articles of Confederation",
+"C. To revise the Articles of Confederation",
+"D. To draft the United States Constitution",
+"E. To create a new system of government"
+],
+correctAnswer: "D",
+explanation: "The primary purpose of the Constitutional Convention, held in Philadelphia in 1787, was to draft the United States Constitution. Delegates from 12 of the 13 states gathered to create a new framework for governance, addressing the weaknesses and limitations of the Articles of Confederation."
+},
+{
+question: "192. Which city served as the meeting place for both the First and Second Continental Congresses?",
+options: [
+"A. Boston",
+"B. New York",
+"C. Philadelphia",
+"D. Washington, D.C.",
+"E. Richmond"
+],
+correctAnswer: "C",
+explanation: "Philadelphia served as the meeting place for both the First and Second Continental Congresses. The First Continental Congress convened in 1774 to address grievances with British rule, while the Second Continental Congress convened in 1775, ultimately leading to the drafting and adoption of the Declaration of Independence in 1776."
+},
+{
+question: "193. Which of the following groups composed a significant portion of the Revolutionary Army during the American Revolution?",
+options: [
+"A. Enslaved African Americans",
+"B. Native Americans",
+"C. European mercenaries",
+"D. Women disguised as men",
+"E. Loyalist militias"
+],
+correctAnswer: "C",
+explanation: "European mercenaries, particularly the Hessians from the German states, composed a significant portion of the Revolutionary Army during the American Revolution. Many of these mercenaries fought on the side of the British, while others, such as the Marquis de Lafayette from France and Baron von Steuben from Prussia, provided crucial assistance to the Continental Army."
+},
+{
+question: "194. What is Betsy Ross best known for?",
+options: [
+"A. Sewing the first American flag",
+"B. Leading a women's militia during the American Revolution",
+"C. Writing influential pamphlets in support of independence",
+"D. Serving as a spy for the Continental Army",
+"E. Organizing boycotts of British goods"
+],
+correctAnswer: "A",
+explanation: "Betsy Ross is best known for sewing the first American flag, according to popular legend. While the story is widely debated among historians, Ross remains an iconic figure in American history, symbolizing the contributions of women to the nation's founding."
+},
+{
+question: "195. Which of the following roles did John Adams play during the American Revolution and the early years of the United States?",
+options: [
+"A. Commander of the Continental Army",
+"B. Author of the Declaration of Independence",
+"C. Member of the Constitutional Convention",
+"D. First Vice President and second President of the United States",
+"E. Chief Justice of the Supreme Court"
+],
+correctAnswer: "D",
+explanation: "John Adams played a significant role during the American Revolution and the early years of the United States. He served as the first Vice President under George Washington and later became the second President of the United States. While he was involved in drafting the Declaration of Independence, he did not write the final version; that responsibility fell to Thomas Jefferson."
+},
+{
+question: "196. What was the primary cause of the Cold War between the United States and the Soviet Union?",
+options: [
+"A. Economic competition",
+"B. Territorial disputes",
+"C. Ideological differences and rivalry for global influence",
+"D. Competition in space exploration",
+"E. The assassination of a political leader"
+],
+correctAnswer: "C",
+explanation: "The primary cause of the Cold War between the United States and the Soviet Union was ideological differences and rivalry for global influence. The two superpowers, with their opposing political and economic systems, sought to spread their influence and secure their interests around the world, leading to a prolonged period of tensions, proxy wars, and competition in various spheres, including technology and military."
+},
+{
+question: "197. What was the Iran-Contra scandal?",
+options: [
+"A. The overthrow of Iran's democratically elected leader",
+"B. The illegal sale of arms to Iran and the diversion of profits to fund anti-Sandinista rebels in Nicaragua",
+"C. The kidnapping of American citizens in Iran",
+"D. The use of chemical weapons during the Iran-Iraq War",
+"E. The hacking of U.S. government computer systems by Iranian operatives"
+],
+correctAnswer: "B",
+explanation: "The Iran-Contra scandal involved the illegal sale of arms to Iran by the United States and the diversion of profits to fund anti-Sandinista rebels (known as Contras) in Nicaragua. This covert operation occurred during the Reagan administration and violated both a Congressional ban on military aid to the Contras and an arms embargo against Iran."
+},
+{
+question: "198. What was the primary reason for the United States' involvement in the First Gulf War in Iraq?",
+options: [
+"A. To remove Saddam Hussein from power",
+"B. To protect oil supplies in the region",
+"C. To respond to the September 11 attacks",
+"D. To liberate Kuwait from Iraqi occupation",
+"E. To support a democratic uprising against the Iraqi regime"
+],
+correctAnswer: "D",
+explanation: "The primary reason for the United States' involvement in the First Gulf War in Iraq was to liberate Kuwait from Iraqi occupation. In August 1990, Iraq, led by Saddam Hussein, invaded and annexed Kuwait. In response, a U.S.-led coalition was formed to expel Iraqi forces from Kuwait and restore its sovereignty."
+},
+{
+question: "199. In which year was the United States Air Force officially established as a separate branch of the U.S. military?",
+options: [
+"A. 1941",
+"B. 1945",
+"C. 1947",
+"D. 1950",
+"E. 1953"
+],
+correctAnswer: "C",
+explanation: "The United States Air Force was officially established as a separate branch of the U.S. military on September 18, 1947. Prior to this, it had been a part of the United States Army and was known as the Army Air Forces during World War II."
+},
+{
+question: "200. Which event is considered the symbolic end of the Cold War?",
+options: [
+"A. The Cuban Missile Crisis",
+"B. The Vietnam War",
+"C. The fall of the Berlin Wall",
+"D. The dissolution of the Soviet Union",
+"E. The signing of the Strategic Arms Reduction Treaty"
+],
+correctAnswer: "C",
+explanation: "The fall of the Berlin Wall in Germany is considered the symbolic end of the Cold War. The wall, which had divided the city of Berlin since 1961, was torn down in 1989, marking the end of the Cold War and the beginning of German reunification."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ]
+
+        function generateQuiz() {
+            const quizForm = document.getElementById('quiz-form');
+            quizData.forEach(function (item, index) {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.dataset.correct = item.correctAnswer;
+
+                const questionText = document.createElement('p');
+                questionText.textContent = item.question;
+                questionDiv.appendChild(questionText);
+
+                item.options.forEach(function (option) {
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = 'q' + (index + 1);
+                    radioButton.value = option.charAt(0);
+                    questionDiv.appendChild(radioButton);
+
+                    const label = document.createElement('label');
+                    label.textContent = option;
+                    questionDiv.appendChild(label);
+
+                    const lineBreak = document.createElement('br');
+                    questionDiv.appendChild(lineBreak);
+                });
+
+                const answerElement = document.createElement('p');
+                answerElement.className = 'answer';
+                answerElement.textContent = 'Answer: ' + item.correctAnswer + '. ' + item.explanation;
+                questionDiv.appendChild(answerElement);
+
+                quizForm.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('submit-button').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.correct;
+                const userAnswer = question.querySelector(`input[name^="q"]:checked`);
+                const answerElement = question.querySelector('.answer');
+
+                if (userAnswer && userAnswer.value === correctAnswer) {
+                    answerElement.style.color = 'green';
+                    answerElement.innerHTML = 'Correct! ' + answerElement.innerHTML;
+                } else if (userAnswer) {
+                    answerElement.style.color = 'red';
+                    answerElement.innerHTML = 'Incorrect. ' + answerElement.innerHTML;
+                } else {
+                    answerElement.style.color = 'black';
+                }
+
+                answerElement.style.display = 'block';
+            });
+        });
+
+        generateQuiz();
+    </script>
+</body>
+</html>
+
