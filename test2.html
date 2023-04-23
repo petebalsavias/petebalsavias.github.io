@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley's Practice Test #2</title>
+    <style>
+        .question {
+            margin-bottom: 1em;
+        }
+        .answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test #2</h1>
+    <form id="quiz-form">
+        <!-- The quiz questions will be generated here. -->
+    </form>
+    <button id="submit-button">Submit</button>
+    <script>
+
+        const quizData = [
+        {
+    question: "41. What was the first governing document of the United States before the Constitution?",
+    options: [
+        "A. The Magna Carta",
+        "B. The Mayflower Compact",
+        "C. The Articles of Confederation",
+        "D. The Bill of Rights",
+        "E. The Federalist Papers"
+    ],
+    correctAnswer: "C",
+    explanation: "The Articles of Confederation - The Articles of Confederation were the first governing document of the United States, serving as the nation's constitution from 1781 to 1789."
+},
+{
+    question: "42. What was the main reason for the failure of the Articles of Confederation?",
+    options: [
+        "A. Lack of a strong central government",
+        "B. The abolition of slavery",
+        "C. The establishment of a single religion",
+        "D. The denial of women's suffrage",
+        "E. The lack of a provision for the common defense"
+    ],
+    correctAnswer: "A",
+    explanation: "Lack of a strong central government - The main reason for the failure of the Articles of Confederation was the lack of a strong central government, which resulted in a weak and ineffective national government."
+},
+{
+    question: "43. Which law, passed by Congress in 1787, established a process for admitting new states into the United States?",
+    options: [
+        "A. The Northwest Ordinance",
+        "B. The Missouri Compromise",
+        "C. The Kansas-Nebraska Act",
+        "D. The Homestead Act",
+        "E. The Dawes Act"
+    ],
+    correctAnswer: "A",
+    explanation: "The Northwest Ordinance - The Northwest Ordinance, passed in 1787, established a process for admitting new states into the United States and provided a framework for the governance of the Northwest Territory."
+},
+{
+    question: "44. Which federal policy, enacted in the 19th century, forced Native American tribes to relocate from their ancestral lands?",
+    options: [
+        "A. The Indian Removal Act",
+        "B. The Dawes Act",
+        "C. The Homestead Act",
+        "D. The Treaty of Guadalupe Hidalgo",
+        "E. The Emancipation Proclamation"
+    ],
+    correctAnswer: "A",
+    explanation: "The Indian Removal Act - The Indian Removal Act, passed in 1830, forced Native American tribes to relocate from their ancestral lands in the southeastern United States to lands west of the Mississippi River."
+},
+{
+    question: "45. What was the name of the forced relocation of the Cherokee people from their ancestral lands to Indian Territory in present-day Oklahoma?",
+    options: [
+        "A. The Trail of Tears",
+        "B. The Long Walk",
+        "C. The Great Migration",
+        "D. The Oregon Trail",
+        "E. The California Gold Rush"
+    ],
+    correctAnswer: "A",
+    explanation: "The Trail of Tears - The forced relocation of the Cherokee people from their ancestral lands to Indian Territory in present-day Oklahoma is known as the Trail of Tears, during which thousands of Cherokee people died from disease, starvation, and exposure."
+},
+{
+    question: "46. Which of the following factors contributed to the Great Depression?",
+    options: [
+        "A. Stock market speculation",
+        "B. Agricultural overproduction",
+        "C. Bank failures",
+        "D. Reduction in consumer spending",
+        "E. All of the above"
+    ],
+    correctAnswer: "E",
+    explanation: "All of the above - Several factors contributed to the Great Depression, including stock market speculation, agricultural overproduction, bank failures, and a reduction in consumer spending."
+},
+{
+    question: "47. What was the 19th Amendment to the United States Constitution?",
+    options: [
+        "A. Prohibition of alcohol",
+        "B. Women's suffrage",
+        "C. Abolition of slavery",
+        "D. The right to bear arms",
+        "E. The establishment of the income tax"
+    ],
+    correctAnswer: "B",
+    explanation: "Women's suffrage - The 19th Amendment to the United States Constitution, ratified in 1920, granted women the right to vote."
+},
+{
+    question: "48. Who were the main Allied powers during World War II?",
+    options: [
+        "A. United States, Soviet Union, and Germany",
+        "B. United States, Great Britain, and Japan",
+        "C. United States, Soviet Union, and Great Britain",
+        "D. United States, Germany, and Italy",
+        "E. United States, France, and China"
+    ],
+    correctAnswer: "C",
+    explanation: "United States, Soviet Union, and Great Britain - The main Allied powers during World War II were the United States, Soviet Union, and Great Britain, along with other countries like France and China."
+},
+{
+    question: "49. How did World War II end in Europe?",
+    options: [
+        "A. The bombing of Hiroshima and Nagasaki",
+        "B. The Battle of Midway",
+        "C. The signing of the Treaty of Versailles",
+        "D. The surrender of Germany",
+        "E. The Japanese attack on Pearl Harbor"
+    ],
+    correctAnswer: "D",
+    explanation: "The surrender of Germany - World War II ended in Europe with the surrender of Germany on May 7, 1945, which marked the end of the conflict in the European theater."
+},
+{
+    question: "50. How did World War II end in the Pacific?",
+    options: [
+        "A. The Battle of Iwo Jima",
+        "B. The Battle of Okinawa",
+        "C. The D-Day invasion",
+        "D. The Japanese surrender after the bombing of Hiroshima and Nagasaki",
+        "E. The signing of the Treaty of San Francisco"
+    ],
+    correctAnswer: "D",
+    explanation: "The Japanese surrender after the bombing of Hiroshima and Nagasaki - World War II ended in the Pacific with the Japanese surrender after the United States dropped atomic bombs on the cities of Hiroshima and Nagasaki in August 1945."
+},
+{
+    question: "51. What is the purpose of the Bill of Rights?",
+    options: [
+        "A. To establish the powers of the federal government",
+        "B. To provide a framework for the legislative process",
+        "C. To protect individual liberties and limit government power",
+        "D. To create a system of checks and balances",
+        "E. To outline the process for amending the Constitution"
+    ],
+    correctAnswer: "C",
+    explanation: "To protect individual liberties and limit government power - The Bill of Rights, which comprises the first ten amendments to the U.S. Constitution, was adopted to protect individual liberties and limit the power of the federal government."
+},
+{
+    question: "52. Why was the Electoral College created?",
+    options: [
+        "A. To ensure that smaller states have a voice in presidential elections",
+        "B. To prevent the direct election of the president by the people",
+        "C. To provide a compromise between the popular vote and congressional selection",
+        "D. To give more power to the political parties",
+        "E. To require a supermajority for the election of the president"
+    ],
+    correctAnswer: "C",
+    explanation: "To provide a compromise between the popular vote and congressional selection - The Electoral College was created as a compromise between those who wanted the president to be elected by a direct popular vote and those who wanted the president to be selected by Congress."
+},
+{
+    question: "53. How did Abraham Lincoln become the 16th President of the United States?",
+    options: [
+        "A. He was appointed by Congress",
+        "B. He won the popular vote in a four-way race",
+        "C. He was elected by the Electoral College",
+        "D. He ascended to the presidency after the previous president was assassinated",
+        "E. He became president after winning a military coup"
+    ],
+    correctAnswer: "C",
+    explanation: "He was elected by the Electoral College - Abraham Lincoln became the 16th President of the United States after winning the 1860 presidential election through the Electoral College, despite a divided popular vote in a four-way race."
+},
+{
+    question: "54. What event did Rosa Parks' actions in Montgomery, Alabama, help to spark?",
+    options: [
+        "A. The Montgomery Bus Boycott",
+        "B. The March on Washington",
+        "C. The Greensboro sit-ins",
+        "D. The Freedom Rides",
+        "E. The Selma to Montgomery marches"
+    ],
+    correctAnswer: "A",
+    explanation: "The Montgomery Bus Boycott - Rosa Parks' refusal to give up her seat on a segregated bus in Montgomery, Alabama, in 1955 led to her arrest and helped to spark the Montgomery Bus Boycott, a major event in the Civil Rights Movement."
+},
+{
+    question: "55. What was the significance of Rosa Parks' refusal to give up her seat on the bus?",
+    options: [
+        "A. It was the first act of civil disobedience in the Civil Rights Movement",
+        "B. It led to the desegregation of public transportation",
+        "C. It resulted in the passage of the Civil Rights Act of 1964",
+        "D. It established the principle of separate but equal",
+        "E. It led to the formation of the Southern Christian Leadership Conference"
+    ],
+    correctAnswer: "B",
+    explanation: "It led to the desegregation of public transportation - Rosa Parks' act of defiance and the subsequent Montgomery Bus Boycott eventually led to a Supreme Court ruling that segregation on public transportation was",
+},
+{
+    question: "56. What event in California in the mid-19th century attracted a massive influx of settlers and fortune-seekers?",
+    options: [
+        "A. The Gold Rush",
+        "B. The Homestead Act",
+        "C. The construction of the Transcontinental Railroad",
+        "D. The Mexican-American War",
+        "E. The Oregon Trail"
+    ],
+    correctAnswer: "A",
+    explanation: "The Gold Rush - The California Gold Rush, which began in 1848, attracted a massive influx of settlers and fortune-seekers to the region, hoping to strike it rich by finding gold."
+},
+{
+    question: "57. What was the primary purpose of the Oregon Trail?",
+    options: [
+        "A. To transport gold from California to the East Coast",
+        "B. To facilitate westward expansion and settlement",
+        "C. To establish a trade route between the United States and China",
+        "D. To connect the eastern and western parts of the United States",
+        "E. To provide a safe passage for settlers fleeing the Civil War"
+    ],
+    correctAnswer: "B",
+    explanation: "To facilitate westward expansion and settlement - The primary purpose of the Oregon Trail was to facilitate westward expansion and settlement by providing a route for settlers to travel from the Midwest to the Pacific Northwest."
+},
+{
+    question: "58. What was the main objective of the Lewis and Clark expedition?",
+    options: [
+        "A. To find a direct water route across North America",
+        "B. To map the Louisiana Purchase territory",
+        "C. To establish trade relations with Native American tribes",
+        "D. To claim the Oregon Territory for the United States",
+        "E. To study the flora and fauna of the western United States"
+    ],
+    correctAnswer: "A",
+    explanation: "To find a direct water route across North America - The main objective of the Lewis and Clark expedition, commissioned by President Thomas Jefferson in 1803, was to find a direct water route across North America for the purpose of commerce."
+},
+{
+    question: "59. What was the 18th Amendment to the United States Constitution?",
+    options: [
+        "A. The prohibition of alcohol",
+        "B. Women's suffrage",
+        "C. The abolition of slavery",
+        "D. The right to bear arms",
+        "E. The repeal of the prohibition of alcohol"
+    ],
+    correctAnswer: "A",
+    explanation: "The prohibition of alcohol - The 18th Amendment to the United States Constitution, ratified in 1919, established the prohibition of the manufacture, sale, and transportation of intoxicating liquors in the United States."
+},
+{
+    question: "60. Which amendment repealed the 18th Amendment, ending the Prohibition era?",
+    options: [
+        "A. The 19th Amendment",
+        "B. The 20th Amendment",
+        "C. The 21st Amendment",
+        "D. The 22nd Amendment",
+        "E. The 23rd Amendment"
+    ],
+    correctAnswer: "C",
+    explanation: "The 21st Amendment - The 21st Amendment to the United States Constitution, ratified in 1933, repealed the 18th Amendment and ended the Prohibition era."
+},
+{
+    question: "61. Which U.S. presidents have been impeached?",
+    options: [
+        "A. Richard Nixon, Bill Clinton, Aaron Burr",
+        "B. Andrew Johnson, Bill Clinton, and Donald Trump",
+        "C. Richard Nixon and Donald Trump",
+        "D. Andrew Johnson, Donald Trump, and Andrew Jackson",
+        "E. Donald Trump and Richard Nixon"
+    ],
+    correctAnswer: "B",
+    explanation: "Andrew Johnson, Bill Clinton, and Donald Trump - U.S. Presidents Andrew Johnson, Bill Clinton, and Donald Trump were all impeached by the House of Representatives, but none of them was convicted by the Senate and removed from office."
+},
+{
+    question: "62. What was the main focus of McCarthyism during the 1950s?",
+    options: [
+        "A. The persecution of alleged communists",
+        "B. The promotion of civil rights",
+        "C. The fight against organized crime",
+        "D. The struggle for women's rights",
+        "E. The opposition to the Vietnam War"
+    ],
+    correctAnswer: "A",
+    explanation: "The persecution of alleged communists - McCarthyism, named after Senator Joseph McCarthy, was a period of intense anti-communist suspicion and persecution during the 1950s in the United States."
+},
+{
+    question: "63. What was the primary conflict between the United States and the Soviet Union during the Cold War?",
+    options: [
+        "A. Economic competition",
+        "B. Territorial disputes",
+        "C. Ideological differences",
+        "D. Religious disagreements",
+        "E. Competition for resources"
+    ],
+    correctAnswer: "C",
+    explanation: "Ideological differences - The primary conflict between the United States and the Soviet Union during the Cold War was rooted in ideological differences, specifically between capitalism and democracy (U.S.) and communism and totalitarianism (Soviet Union)."
+},
+{
+    question: "64. Who invented the cotton gin, and what was its primary impact?",
+    options: [
+        "A. Eli Whitney; it increased the demand for slave labor",
+        "B. Thomas Edison; it revolutionized the textile industry",
+        "C. Alexander Graham Bell; it improved communication on plantations",
+        "D. James Watt; it increased the efficiency of steam engines",
+        "E. Samuel Morse; it enabled faster communication of cotton prices"
+    ],
+    correctAnswer: "A",
+    explanation: "Eli Whitney; it increased the demand for slave labor - The cotton gin was invented by Eli Whitney in 1793, and its primary impact was to increase the demand for slave labor in the United States by making the process of separating cotton fibers from seeds more efficient."
+},
+{
+    question: "65. What was the main reason for the construction of the Berlin Wall?",
+    options: [
+        "A. To protect East Germany from a NATO invasion",
+        "B. To prevent the spread of communism to West Germany",
+        "C. To stop the flow of East Germans fleeing to West Germany",
+        "D. To separate the Soviet and American zones of occupation",
+        "E. To provide a physical barrier between East and West Berlin"
+    ],
+    correctAnswer: "C",
+    explanation: "To stop the flow of East Germans fleeing to West Germany - The main reason for the construction of the Berlin Wall was to stop the flow of East Germans fleeing to West Germany in search of better economic opportunities and political freedom."
+},
+{
+    question: "66. What was the primary cause of the Boston Tea Party?",
+    options: [
+        "A. Opposition to British taxation policies",
+        "B. Anger over British military occupation",
+        "C. Disagreements about trade with Native Americans",
+        "D. The desire for greater representation in Parliament",
+        "E. The promotion of tea smuggling by American merchants"
+    ],
+    correctAnswer: "A",
+    explanation: "Opposition to British taxation policies - The primary cause of the Boston Tea Party was opposition to British taxation policies, specifically the Tea Act of 1773, which granted the British East India Company a monopoly on tea sales in the American colonies."
+},
+{
+    question: "67. What event marked the beginning of the American Civil War?",
+    options: [
+        "A. The attack on Fort Sumter",
+        "B. The Battle of Gettysburg",
+        "C. The issuance of the Emancipation Proclamation",
+        "D. The election of Abraham Lincoln",
+        "E. The passage of the Kansas-Nebraska Act"
+    ],
+    correctAnswer: "A",
+    explanation: "The attack on Fort Sumter - The beginning of the American Civil War is marked by the attack on Fort Sumter in Charleston Harbor, South Carolina, on April 12, 1861."
+},
+{
+    question: "68. Who were the main generals of the Union and Confederate forces during the American Civil War?",
+    options: [
+        "A. Ulysses S. Grant and Robert E. Lee",
+        "B. George Washington and Thomas Jefferson",
+        "C. William Tecumseh Sherman and Stonewall Jackson",
+        "D. George McClellan and Joseph E. Johnston",
+        "E. Ambrose Burnside and P.G.T. Beauregard"
+    ],
+    correctAnswer: "A",
+    explanation: "Ulysses S. Grant and Robert E. Lee - The main generals of the Union and Confederate forces during the American Civil War were Ulysses S. Grant (Union) and Robert E. Lee (Confederacy)."
+},
+{
+    question: "69. Which battle is considered the turning point of the American Civil War?",
+    options: [
+        "A. The Battle of Antietam",
+        "B. The Battle of Gettysburg",
+        "C. The Battle of Bull Run",
+        "D. The Battle of Fort Sumter",
+        "E. The Battle of Vicksburg"
+    ],
+    correctAnswer: "B",
+    explanation: "The Battle of Gettysburg - The Battle of Gettysburg, fought in 1863, is considered the turning point of the American Civil War because it marked a major victory for the Union forces and halted the Confederate invasion of the North."
+},
+{
+    question: "70. What was the primary goal of the Emancipation Proclamation?",
+    options: [
+        "A. To end slavery in the United States",
+        "B. To provide equal rights for all citizens",
+        "C. To free slaves in Confederate-held territories",
+        "D. To grant voting rights to former slaves",
+        "E. To establish a national bank to fund the war effort"
+    ],
+    correctAnswer: "C",
+    explanation: "To free slaves in Confederate-held territories - The primary goal of the Emancipation Proclamation, issued by President Abraham Lincoln in 1863, was to free slaves in Confederate-held territories as a wartime measure to weaken the Confederacy."
+},
+{
+    question: "71. Why did President Richard Nixon resign from office?",
+    options: [
+        "A. Due to the Watergate scandal",
+        "B. Because of his involvement in the Vietnam War",
+        "C. After losing the support of his political party",
+        "D. Due to health issues",
+        "E. To avoid impeachment for the Iran-Contra affair"
+    ],
+    correctAnswer: "A",
+    explanation: "Due to the Watergate scandal - President Richard Nixon resigned from office on August 9, 1974, due to the Watergate scandal, which involved a break-in at the Democratic National Committee headquarters and subsequent cover-up by Nixon's administration."
+},
+{
+    question: "72. What was the significance of the murder of Emmett Till?",
+    options: [
+        "A. It led to the passage of the Civil Rights Act of 1964",
+        "B. It galvanized the civil rights movement",
+        "C. It resulted in the desegregation of public schools",
+        "D. It prompted the creation of the Black Panther Party",
+        "E. It led to the passage of the Voting Rights Act of 1965"
+    ],
+    correctAnswer: "B",
+    explanation: "It galvanized the civil rights movement - The murder of Emmett Till, a 14-year-old African American boy who was lynched in Mississippi in 1955, galvanized the civil rights movement by exposing the brutal reality of racial violence in the United States."
+},
+{
+    question: "73. What was Malcolm X best known for?",
+    options: [
+        "A. Advocating for nonviolent civil rights activism",
+        "B. Promoting black nationalism and self-reliance",
+        "C. Serving as a key advisor to President Lyndon B. Johnson",
+        "D. Founding the Southern Christian Leadership Conference",
+        "E. Coordinating the Montgomery bus boycott"
+    ],
+    correctAnswer: "B",
+    explanation: "Promoting black nationalism and self-reliance - Malcolm X was best known for promoting black nationalism and self-reliance, and for his role as a spokesman for the Nation of Islam during the 1950s and early 1960s."
+},
+{
+    question: "74. In what year were Alaska and Hawaii admitted as states?",
+    options: [
+        "A. 1945",
+        "B. 1959",
+        "C. 1963",
+        "D. 1972",
+        "E. 1980"
+    ],
+    correctAnswer: "B",
+    explanation: "1959 - Alaska and Hawaii were admitted as the 49th and 50th states of the United States in 1959."
+},
+{
+    question: "75. What is the current political status of Puerto Rico?",
+    options: [
+        "A. A state of the United States",
+        "B. An independent nation",
+        "C. A U.S. territory with commonwealth status",
+        "D. A dependency of another country",
+        "E. A U.S. protectorate"
+    ],
+    correctAnswer: "C",
+    explanation: "A U.S. territory with commonwealth status - Puerto Rico is currently a U.S. territory with commonwealth status, which means it is self-governing under a constitution that was approved by both the people of Puerto Rico and the U.S. Congress."
+},
+{
+    question: "76. What major infrastructure project was initiated during President Eisenhower's administration?",
+    options: [
+        "A. The construction of the Hoover Dam",
+        "B. The creation of the National Parks system",
+        "C. The establishment of the Social Security system",
+        "D. The building of the Interstate Highway System",
+        "E. The construction of the Golden Gate Bridge"
+    ],
+    correctAnswer: "D",
+    explanation: "The building of the Interstate Highway System - President Dwight D. Eisenhower initiated the construction of the Interstate Highway System in the United States during his administration, which began in 1953."
+},
+{
+    question: "77. Who founded the FBI, and what was its original purpose?",
+    options: [
+        "A. J. Edgar Hoover; to investigate organized crime",
+        "B. Theodore Roosevelt; to enforce antitrust laws",
+        "C. Charles Bonaparte; to investigate federal crimes",
+        "D. Franklin D. Roosevelt; to gather intelligence during World War II",
+        "E. William J. Burns; to combat political corruption"
+    ],
+    correctAnswer: "C",
+    explanation: "Charles Bonaparte; to investigate federal crimes - The Federal Bureau of Investigation (FBI) was founded by Charles Bonaparte in 1908, and its original purpose was to investigate federal crimes."
+},
+{
+    question: "78. What major economic policy was pursued by President Reagan?",
+    options: [
+        "A. Keynesian economics",
+        "B. Supply-side economics",
+        "C. Monetarism",
+        "D. Socialism",
+        "E. Mercantilism"
+    ],
+    correctAnswer: "B",
+    explanation: "Supply-side economics - President Ronald Reagan pursued supply-side economics during his administration, which involved tax cuts, deregulation, and a reduction in government spending in order to stimulate economic growth."
+},
+{
+    question: "79. What was the United States' main objective during the Space Race?",
+    options: [
+        "A. To be the first country to orbit the Earth",
+        "B. To be the first country to send a human into space",
+        "C. To be the first country to land a human on the Moon",
+        "D. To be the first country to establish a space station",
+        "E. To be the first country to explore Mars"
+    ],
+    correctAnswer: "C",
+    explanation: "To be the first country to land a human on the Moon - The United States' main objective during the Space Race was to be the first country to land a human on the Moon, which was achieved with the Apollo 11 mission in 1969."
+},
+{
+    question: "80. What was a major foreign policy event during President Reagan's administration?",
+    options: [
+        "A. The Cuban Missile Crisis",
+        "B. The Vietnam War",
+        "C. The Iran-Contra affair",
+        "D. The Gulf War",
+        "E. The Korean War"
+    ],
+    correctAnswer: "C",
+    explanation: "The Iran-Contra affair - A major foreign policy event during President Reagan's administration was the Iran-Contra affair, which involved the secret sale of arms to Iran and the funneling of proceeds to anti-Sandinista rebels in Nicaragua."
+}
+
+
+
+
+
+
+        ]
+
+        function generateQuiz() {
+            const quizForm = document.getElementById('quiz-form');
+            quizData.forEach(function (item, index) {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.dataset.correct = item.correctAnswer;
+
+                const questionText = document.createElement('p');
+                questionText.textContent = item.question;
+                questionDiv.appendChild(questionText);
+
+                item.options.forEach(function (option) {
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = 'q' + (index + 1);
+                    radioButton.value = option.charAt(0);
+                    questionDiv.appendChild(radioButton);
+
+                    const label = document.createElement('label');
+                    label.textContent = option;
+                    questionDiv.appendChild(label);
+
+                    const lineBreak = document.createElement('br');
+                    questionDiv.appendChild(lineBreak);
+                });
+
+                const answerElement = document.createElement('p');
+                answerElement.className = 'answer';
+                answerElement.textContent = 'Answer: ' + item.correctAnswer + '. ' + item.explanation;
+                questionDiv.appendChild(answerElement);
+
+                quizForm.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('submit-button').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.correct;
+                const userAnswer = question.querySelector(`input[name^="q"]:checked`);
+                const answerElement = question.querySelector('.answer');
+
+                if (userAnswer && userAnswer.value === correctAnswer) {
+                    answerElement.style.color = 'green';
+                    answerElement.innerHTML = 'Correct! ' + answerElement.innerHTML;
+                } else if (userAnswer) {
+                    answerElement.style.color = 'red';
+                    answerElement.innerHTML = 'Incorrect. ' + answerElement.innerHTML;
+                } else {
+                    answerElement.style.color = 'black';
+                }
+
+                answerElement.style.display = 'block';
+            });
+        });
+
+        generateQuiz();
+    </script>
+</body>
+</html>
+
