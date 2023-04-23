@@ -1,1 +1,452 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley's Practice Test #1</title>
+    <style>
+        .question {
+            margin-bottom: 1em;
+        }
+        .answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample History Test</h1>
+    <form id="quiz-form">
+        <!-- The quiz questions will be generated here. -->
+    </form>
+    <button id="submit-button">Submit</button>
+    <script>
+
+        const quizData = [
+    {
+        question: "1. Who was the founder of the colony of Georgia?",
+        options: [
+            "A. James Oglethorpe",
+            "B. John Smith",
+            "C. William Penn",
+            "D. Thomas Jefferson",
+            "E. Roger Williams"
+        ],
+        correctAnswer: "A",
+        explanation: "James Oglethorpe - He founded the colony of Georgia in 1733."
+    },
+    {
+        question: "2. What was the main purpose of establishing the colony of Georgia?",
+        options: [
+            "A. To serve as a penal colony",
+            "B. To promote religious freedom",
+            "C. Serve as a buffer zone",
+            "D. To create a new center of trade",
+            "E. To expand British territory"
+        ],
+        correctAnswer: "C",
+        explanation: "Serve as a buffer zone - Georgia was intended to serve as a buffer between the British colonies and Spanish Florida."
+    },
+    {
+        question: "3. Which city was the first city established in Georgia?",
+        options: [
+            "A. Atlanta",
+            "B. Augusta",
+            "C. Columbus",
+            "D. Macon",
+            "E. Savannah"
+        ],
+        correctAnswer: "E",
+        explanation: "Savannah - Founded in 1733, Savannah was the first city established in Georgia."
+    },
+    {
+        question: "4. Which institution was initially banned in the Georgia colony?",
+        options: [
+            "A. Land ownership",
+            "B. Slavery",
+            "C. Alcohol production",
+            "D. Religious practices",
+            "E. Trade with Native Americans"
+        ],
+        correctAnswer: "B",
+        explanation: "Slavery - Georgia initially prohibited slavery, but the ban was lifted in 1750."
+    },
+    {
+        question: "5. Which Civil War event took place in Georgia?",
+        options: [
+            "A. The Battle of Antietam",
+            "B. Sherman's March to the Sea",
+            "C. The Battle of Gettysburg",
+            "D. The Siege of Vicksburg",
+            "E. The First Battle of Bull Run"
+        ],
+        correctAnswer: "B",
+        explanation: "Sherman's March to the Sea - Union General William T. Sherman led his forces on a destructive march through Georgia in 1864."
+    },
+    {
+        question: "6. Who is considered the main architect of the U.S. Constitution?",
+        options: [
+            "A. George Washington",
+            "B. Benjamin Franklin",
+            "C. Thomas Jefferson",
+            "D. John Adams",
+            "E. James Madison"
+        ],
+        correctAnswer: "E",
+        explanation: "James Madison - He is considered the main architect of the U.S. Constitution."
+    },
+    {
+        question: "7. Which president oversaw the Louisiana Purchase?",
+        options: [
+            "A. George Washington",
+            "B. John Adams",
+            "C. Thomas Jefferson",
+            "D. James Madison",
+            "E. James Monroe"
+        ],
+        correctAnswer: "C",
+        explanation: "Thomas Jefferson - The Louisiana Purchase took place during his presidency in 1803."
+    },
+    {
+        question: "8. What is the significance of the Cahokia Mounds?",
+        options: [
+            "A. They mark the site of an ancient Roman settlement",
+            "B. They were built         ",
+            "C. They were built by a pre-Columbian Native American city",
+        "D. They are the burial grounds of early European settlers",
+        "E. They were a religious site for early Christian missionaries"
+    ],
+    correctAnswer: "C",
+    explanation: "They were built by a pre-Columbian Native American city - Cahokia Mounds is the site of a prehistoric Native American city, which existed between 1050 and 1350 CE."
+},
+{
+    question: "9. What was the primary goal of the Reconstruction Era following the Civil War?",
+    options: [
+        "A. Expanding westward",
+        "B. Rebuilding the southern economy",
+        "C. Establishing civil rights for former slaves",
+        "D. Strengthening the federal government",
+        "E. Encouraging European immigration"
+    ],
+    correctAnswer: "C",
+    explanation: "Establishing civil rights for former slaves - The main goal of the Reconstruction Era was to integrate former slaves into society and establish their civil rights."
+},
+{
+    question: "10. Which amendment to the U.S. Constitution granted African American men the right to vote?",
+    options: [
+        "A. 13th Amendment",
+        "B. 14th Amendment",
+        "C. 15th Amendment",
+        "D. 16th Amendment",
+        "E. 17th Amendment"
+    ],
+    correctAnswer: "C",
+    explanation: "15th Amendment - It granted African American men the right to vote, regardless of their race or previous condition of servitude."
+},
+{
+    question: "11. What was the main purpose of the Homestead Act of 1862?",
+    options: [
+        "A. To encourage the settlement of the western territories",
+        "B. To provide financial support for newly freed slaves",
+        "C. To promote the construction of railroads",
+        "D. To establish a system of public education",
+        "E. To create a national currency"
+    ],
+    correctAnswer: "A",
+    explanation: "To encourage the settlement of the western territories - The Homestead Act provided public land to settlers for a small fee, encouraging westward expansion."
+},
+{
+    question: "12. What was the significance of the Battle of Little Bighorn?",
+    options: [
+        "A. It marked the beginning of the Civil War",
+        "B. It was the largest battle of the Revolutionary War",
+        "C. It was a major Native American victory against U.S. forces",
+        "D. It marked the end of the Mexican-American War",
+        "E. It was a turning point in the War of 1812"
+    ],
+    correctAnswer: "C",
+    explanation: "It was a major Native American victory against U.S. forces - The Battle of Little Bighorn, also known as Custer's Last Stand, was a decisive victory for the Lakota, Northern Cheyenne, and Arapaho tribes against the U.S. Army."
+},
+{
+    question: "13. What was the main cause of the Spanish-American War?",
+    options: [
+        "A. The sinking of the USS Maine",
+        "B. Spanish support for the Confederacy during the Civil War",
+        "C. The annexation of Texas",
+        "D. Competition for control of the Pacific trade routes",
+        "E. Spanish colonization of the Philippines"
+    ],
+    correctAnswer: "A",
+    explanation: "The sinking of the USS Maine - The explosion and sinking of the USS Maine in Havana Harbor was a catalyst for the Spanish-American War, as it heightened tensions between the U.S.         and Spain."
+},
+{
+    question: "14. Which U.S. president is associated with the 'New Deal'?",
+    options: [
+        "A. Woodrow Wilson",
+        "B. Herbert Hoover",
+        "C. Franklin D. Roosevelt",
+        "D. Harry S. Truman",
+        "E. Dwight D. Eisenhower"
+    ],
+    correctAnswer: "C",
+    explanation: "Franklin D. Roosevelt - The 'New Deal' was a series of programs and policies implemented by President Roosevelt to combat the Great Depression."
+},
+{
+    question: "15. What was the main goal of the Civil Rights Movement in the 1950s and 1960s?",
+    options: [
+        "A. To end racial segregation and discrimination",
+        "B. To establish a national health care system",
+        "C. To promote environmental conservation",
+        "D. To advocate for women's rights",
+        "E. To protest the Vietnam War"
+    ],
+    correctAnswer: "A",
+    explanation: "To end racial segregation and discrimination - The Civil Rights Movement aimed to achieve equal rights for African Americans and end segregation and discrimination based on race."
+},
+{
+    question: "16. What was the outcome of the 2000 U.S. presidential election?",
+    options: [
+        "A. Al Gore won the popular vote but lost the electoral vote",
+        "B. George W. Bush won both the popular vote and the electoral vote",
+        "C. The election was decided by the House of Representatives",
+        "D. A recount was ordered by the Supreme Court",
+        "E. The Electoral College was abolished"
+    ],
+    correctAnswer: "A",
+    explanation: "Al Gore won the popular vote but lost the electoral vote - The 2000 presidential election was a controversial one, with Al Gore winning the popular vote but losing the electoral vote to George W. Bush."
+},
+{
+    question: "17. What was the main cause of the September 11, 2001 terrorist attacks?",
+    options: [
+        "A. A conflict between the U.S. and Russia",
+        "B. The Israeli-Palestinian conflict",
+        "C. The U.S. invasion of Iraq",
+        "D. Islamic extremism and anti-American sentiment",
+        "E. A plot by North Korea"
+    ],
+    correctAnswer: "D",
+    explanation: "Islamic extremism and anti-American sentiment - The September 11 attacks were carried out by the extremist group al-Qaeda, which opposed U.S. foreign policies and presence in Muslim countries."
+},
+{
+    question: "18. What was the main purpose of the U.S. invasion of Afghanistan in 2001?",
+    options: [
+        "A. To overthrow the Taliban government",
+        "B. To capture Osama bin Laden",
+        "C. To secure control of oil reserves",
+        "D. To establish a new government",
+        "E. To prevent the spread of communism"
+    ],
+    correctAnswer: "A",
+    explanation: "To overthrow the Taliban government - The U.S. invaded Afghanistan in response to the September 11 attacks, aiming to dismantle the Taliban government, which provided support to al-Qaeda."
+},
+{
+    question: "19. What was the main justification for the U.S. invasion of Iraq in 2003?",
+    options: [
+        "A. To secure control of oil reserves",
+        "B. To eliminate weapons of mass destruction",
+        "C. To retaliate for the September 11 attacks",
+        "D. To liberate the Iraqi people from dictatorship",
+        "E. To prevent the spread of communism"
+    ],
+    correctAnswer: "B",
+    explanation: "To eliminate weapons of mass destruction - The main justification for the U.S. invasion of Iraq in 2003 was the belief that Iraq possessed weapons of mass destruction, which later turned out to be false."
+},
+{
+    question: "20. Which U.S. president signed the Affordable Care Act into law?",
+    options: [
+        "A. George W. Bush",
+        "B. Barack Obama",
+        "C. Bill Clinton",
+        "D. Donald Trump",
+        "E. Joe Biden"
+    ],
+    correctAnswer: "B",
+    explanation: "Barack Obama - The Affordable Care Act, also known as Obamacare, was signed into law by President Barack Obama on March 23, 2010."
+},
+{
+    question: "21. What was the outcome of the Dred Scott v. Sandford case?",
+    options: [
+        "A. Dred Scott was granted his freedom",
+        "B. The Missouri Compromise was ruled unconstitutional",
+        "C. The Fugitive Slave Act was overturned",
+        "D. Slavery was abolished in the United States",
+        "E. The Emancipation Proclamation was issued"
+    ],
+    correctAnswer: "B",
+    explanation: "The Missouri Compromise was ruled unconstitutional - The Supreme Court ruled that African Americans were not citizens and that Congress had no authority to regulate slavery in the territories."
+},
+{
+    question: "22. What was the significance of the Roe v. Wade decision?",
+    options: [
+        "A. It legalized abortion in the United States",
+        "B. It established the right to privacy",
+        "C. It desegregated public schools",
+        "D. It granted women the right to vote",
+        "E. It abolished the death penalty"
+    ],
+    correctAnswer: "A",
+    explanation: "It legalized abortion in the United States - The Roe v. Wade decision established a woman's legal right to have an abortion under the constitutional right to privacy."
+},
+{
+    question: "23. What was the significance of the Battle of Gettysburg?",
+    options: [
+        "A. It marked the beginning of the Civil War",
+        "B. It was the largest battle of the Revolutionary War",
+        "C. It was a turning point in the Civil War in favor of the Union",
+        "D. It marked the end of the Mexican-American War",
+        "E. It was a turning point in the War of 1812"
+    ],
+    correctAnswer: "C",
+    explanation: "It was a turning point in the Civil War in favor of the Union - The Battle of Gettysburg marked a major victory for the Union Army and was a turning point in the Civil War."
+},
+{
+    question: "24. What event is considered the immediate cause of World War I?",
+    options: [
+        "A. The assassination of Archduke Franz Ferdinand",
+        "B. The sinking of the Lusitania",
+        "C. The Zimmerman Telegram",
+        "D. The Russian Revolution",
+        "E. The invasion of Belgium"
+    ],
+    correctAnswer: "A",
+    explanation: "The assassination of Archduke Franz Ferdinand - The assassination of the Austro-Hungarian Archduke by a Serbian nationalist in 1914 is considered the immediate cause of World War I."
+},
+{
+    question: "25. Which country initially remained neutral during World War I, but later joined the conflict on the side of the Allies?",
+    options: [
+        "A. Russia",
+        "B. Germany",
+        "C. France",
+        "D. Italy",
+        "E. United States"
+    ],
+    correctAnswer: "E",
+    explanation: "United States - The U.S. remained neutral at the beginning of World War I but later joined the conflict on the side of the Allies in 1917, mainly due to unrestricted submarine warfare by Germany."
+},
+{
+    question: "26. What was the primary reason for the United States' involvement in the Vietnam War?",
+    options: [
+        "A. To protect American economic interests",
+        "B. To prevent the spread of communism",
+        "C. To liberate Vietnam from Japanese occupation",
+        "D. To support a democratic government in Vietnam",
+        "E. To retaliate against a Vietnamese attack on the U.S."
+    ],
+    correctAnswer: "B",
+    explanation: "To prevent the spread of communism - The United States became involved in the Vietnam War primarily to prevent the spread of communism in Southeast Asia."
+},
+{
+    question: "27. Which event led the United States to enter World War II?",
+    options: [
+        "A. The German invasion of Poland",
+        "B. The sinking of the Lusitania",
+        "C. The attack on Pearl Harbor",
+        "D. The signing of the Non-Aggression Pact between Germany and the Soviet Union",
+        "E. The Battle of Britain"
+    ],
+    correctAnswer: "C",
+    explanation: "The attack on Pearl Harbor - The Japanese attack on the U.S. naval base at Pearl Harbor on December 7, 1941, prompted the United States to enter World War II."
+},
+{
+    question: "28. Who were the main Allies during World War II?",
+    options: [
+        "A. United States, Soviet Union, and Germany",
+        "B. United States, Great Britain, and Japan",
+        "C. United States, Great Britain, and Soviet Union",
+        "D. United States, Germany, and Italy",
+        "E. United States, France, and Japan"
+    ],
+    correctAnswer: "C",
+    explanation: "United States, Great Britain, and Soviet Union - The main Allied powers during World War II were the United States, Great Britain, and the Soviet Union, along with other countries like France and China."
+},
+{
+    question: "29. What was the significance of the Cuban Missile Crisis?",
+    options: [
+        "A. It marked the beginning of the Cold War",
+        "B. It led to the construction of the Berlin Wall",
+        "C. It brought the United States and Soviet Union to the brink of nuclear war",
+        "D. It resulted in the overthrow of Cuban leader Fidel Castro",
+        "E. It led to the signing of the Treaty of Tordesillas"
+    ],
+    correctAnswer: "C",
+    explanation: "It brought the United States and Soviet Union to the brink of nuclear war - The Cuban Missile Crisis was a 13-day confrontation between the U.S. and the Soviet Union over the placement of Soviet nuclear missiles in Cuba."
+},
+{
+    question: "30. What was the outcome of the Bay of Pigs invasion?",
+    options: [
+        "A. The invasion was a success, and Fidel Castro was overthrown",
+        "B. The invasion was a failure, and the United States was forced to withdraw",
+        "C. The invasion led to a diplomatic resolution between the United States and Cuba",
+        "D. The invasion resulted in the United States establishing a naval base in Cuba",
+        "E. The invasion prompted the Cuban government to join the Soviet bloc"
+    ],
+    correctAnswer: "B",
+    explanation: "The invasion was a failure, and the United States was forced to withdraw - The Bay of Pigs invasion was an unsuccessful attempt by the U.S.-backed Cuban exiles to overthrow Fidel Castro's government."
+}
+
+
+
+]
+
+
+
+        function generateQuiz() {
+            const quizForm = document.getElementById('quiz-form');
+            quizData.forEach(function (item, index) {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.dataset.correct = item.correctAnswer;
+
+                const questionText = document.createElement('p');
+                questionText.textContent = item.question;
+                questionDiv.appendChild(questionText);
+
+                item.options.forEach(function (option) {
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = 'q' + (index + 1);
+                    radioButton.value = option.charAt(0);
+                    questionDiv.appendChild(radioButton);
+
+                    const label = document.createElement('label');
+                    label.textContent = option;
+                    questionDiv.appendChild(label);
+
+                    const lineBreak = document.createElement('br');
+                    questionDiv.appendChild(lineBreak);
+                });
+
+                const answerElement = document.createElement('p');
+                answerElement.className = 'answer';
+                answerElement.textContent = 'Answer: ' + item.correctAnswer + '. ' + item.explanation;
+                questionDiv.appendChild(answerElement);
+
+                quizForm.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('submit-button').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.correct;
+                const userAnswer = question.querySelector(`input[name^="q"]:checked`);
+                const answerElement = question.querySelector('.answer');
+
+                if (userAnswer && userAnswer.value === correctAnswer) {
+                    answerElement.style.color = 'green';
+                    answerElement.innerHTML = 'Correct! ' + answerElement.innerHTML;
+                } else if (userAnswer) {
+                    answerElement.style.color = 'red';
+                    answerElement.innerHTML = 'Incorrect. ' + answerElement.innerHTML;
+                } else {
+                    answerElement.style.color = 'black';
+                }
+
+                answerElement.style.display = 'block';
+            });
+        });
+
+        generateQuiz();
+    </script>
+</body>
+</html>
+
