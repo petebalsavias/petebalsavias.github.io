@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley's Practice Test #2</title>
+    <style>
+        .question {
+            margin-bottom: 1em;
+        }
+        .answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test #2</h1>
+    <form id="quiz-form">
+        <!-- The quiz questions will be generated here. -->
+    </form>
+    <button id="submit-button">Submit</button>
+    <script>
+
+        const quizData = [
+        {
+    question: "81. What was a major factor in the United States' victory in the Revolutionary War?",
+    options: [
+        "A. The use of guerrilla warfare tactics",
+        "B. Financial support from European allies",
+        "C. The overwhelming size of the American army",
+        "D. The intervention of the British Parliament",
+        "E. Superior naval power"
+    ],
+    correctAnswer: "B",
+    explanation: "Financial support from European allies - A major factor in the United States' victory in the Revolutionary War was the financial support from European allies, particularly France, which provided vital financial and military assistance."
+},
+{
+    question: "82. What was the primary cause of the conflict between the American colonies and England leading to the Revolutionary War?",
+    options: [
+        "A. Disputes over territory",
+        "B. Taxation without representation",
+        "C. The forced quartering of British soldiers",
+        "D. The abolition of slavery",
+        "E. Religious persecution"
+    ],
+    correctAnswer: "B",
+    explanation: "Taxation without representation - The primary cause of the conflict between the American colonies and England leading to the Revolutionary War was the issue of 'taxation without representation.' The colonists were being heavily taxed by the British government without having any representation in Parliament."
+},
+{
+    question: "83. Which European power provided significant aid to the United States during the Revolutionary War?",
+    options: [
+        "A. Spain",
+        "B. France",
+        "C. Germany",
+        "D. Russia",
+        "E. Italy"
+    ],
+    correctAnswer: "B",
+    explanation: "France - France provided significant aid to the United States during the Revolutionary War, including financial support, military equipment, and troops."
+},
+{
+    question: "84. What was the primary cause of the War of 1812?",
+    options: [
+        "A. British support for Native American tribes in the Northwest Territory",
+        "B. British impressment of American sailors",
+        "C. The annexation of Texas",
+        "D. The desire for territorial expansion in Canada",
+        "E. The violation of American neutrality during the Napoleonic Wars"
+    ],
+    correctAnswer: "B",
+    explanation: "British impressment of American sailors - The primary cause of the War of 1812 was the British impressment of American sailors, in which the British navy forcibly removed American sailors from their ships and pressed them into service in the Royal Navy."
+},
+{
+    question: "85. Which of the following was a significant outcome of the War of 1812?",
+    options: [
+        "A. The United States annexed Canada",
+        "B. The United States lost territory to Britain",
+        "C. The United States gained territory from Britain",
+        "D. The United States and Britain agreed to a stalemate",
+        "E. The United States established dominance over European powers in North America"
+    ],
+    correctAnswer: "D",
+    explanation: "The United States and Britain agreed to a stalemate - The War of 1812 ended in a stalemate, with both the United States and Britain agreeing to the pre-war status quo through the Treaty of Ghent."
+},
+{
+    question: "86. What was a major impact of the Industrial Revolution in the United States?",
+    options: [
+        "A. A decrease in the number of jobs available",
+        "B. An increase in the cost of goods",
+        "C. The establishment of labor unions",
+        "D. An increase in production efficiency",
+        "E. A decrease in technological innovation"
+    ],
+    correctAnswer: "D",
+    explanation: "An increase in production efficiency - A major impact of the Industrial Revolution in the United States was an increase in production efficiency, which led to the mass production of goods and lower costs for consumers."
+},
+{
+    question: "87. What was a significant effect of the expansion of the railroad in the United States?",
+    options: [
+        "A. A decrease in travel time and costs",
+        "B. A decrease in the number of jobs available",
+        "C. An increase in the cost of goods",
+        "D. A decrease in trade between regions",
+        "E. A decrease in technological innovation"
+    ],
+    correctAnswer: "A",
+    explanation: "A decrease in travel time and costs - A significant effect of the expansion of the railroad in the United States was a decrease in travel time and costs, which helped to spur economic growth and westward expansion."
+},
+{
+    question: "88. How were Japanese Americans treated by the United States during World War II?",
+    options: [
+        "A. They were treated as allies and given special privileges",
+        "B. They were treated the same as all other Americans",
+        "C. They were placed in internment camps",
+        "D. They were forced to join the military",
+        "E. They were deported back to Japan"
+    ],
+    correctAnswer: "C",
+    explanation: "They were placed in internment camps - Japanese Americans were treated unfairly during World War II and many were forced to leave their homes and businesses and were placed in internment camps by the U.S. government, even though they had committed no crimes."
+},
+{
+    question: "89. What was the primary reason for the United States' entry into World War I?",
+    options: [
+        "A. To defend American territory from foreign aggression",
+        "B. To support Britain and France in their fight against Germany",
+        "C. To gain access to colonial territories in Europe and Africa",
+        "D. To spread democracy and freedom around the world",
+        "E. To avenge the sinking of the Lusitania"
+    ],
+    correctAnswer: "E",
+    explanation: "To avenge the sinking of the Lusitania - The primary reason for the United States' entry into World War I was the sinking of the Lusitania, a passenger ship carrying American citizens that was torpedoed by a German submarine."
+},
+{
+    question: "90. What was a significant outcome of the United States' participation in World War I?",
+    options: [
+        "A. The United States emerged as a global superpower",
+        "B. The United States lost significant territory to European powers",
+        "C. The United States gained access to colonial territories in Europe and Africa",
+        "D. The United States established a system of alliances with European powers",
+        "E. The United States remained an isolationist nation"
+    ],
+    correctAnswer: "A",
+    explanation: "The United States emerged as a global superpower - A significant outcome of the United States' participation in World War I was the country's emergence as a global superpower, due to its military and economic contributions to the Allied victory."
+},
+{
+    question: "91. What was the significance of the landmark Supreme Court case Marbury v. Madison?",
+    options: [
+        "A. It established the principle of judicial review",
+        "B. It expanded the power of the federal government",
+        "C. It upheld the constitutionality of the Alien and Sedition Acts",
+        "D. It abolished slavery in the United States",
+        "E. It established the principle of equal protection under the law"
+    ],
+    correctAnswer: "A",
+    explanation: "It established the principle of judicial review - The significance of Marbury v. Madison was that it established the principle of judicial review, giving the Supreme Court the power to strike down unconstitutional laws."
+},
+{
+    question: "92. Who was a key political figure in Georgia during the Civil Rights Movement?",
+    options: [
+        "A. Martin Luther King Jr.",
+        "B. Harriet Tubman",
+        "C. Abraham Lincoln",
+        "D. Susan B. Anthony",
+        "E. Theodore Roosevelt"
+    ],
+    correctAnswer: "A",
+    explanation: "Martin Luther King Jr. - Martin Luther King Jr. was a key political figure in Georgia during the Civil Rights Movement, leading protests and advocating for equal rights for African Americans."
+},
+{
+    question: "93. What was the composition of the South before the Civil War?",
+    options: [
+        "A. It was mostly industrialized and urban",
+        "B. It had a diverse population of European immigrants",
+        "C. It was dominated by large plantations and a slave economy",
+        "D. It was heavily populated by Native American tribes",
+        "E. It was an independent country separate from the United States"
+    ],
+    correctAnswer: "C",
+    explanation: "It was dominated by large plantations and a slave economy - The South before the Civil War was primarily rural and agricultural, with a small number of wealthy landowners controlling the vast majority of the region's wealth and resources through large plantations and the use of slave labor."
+},
+{
+    question: "94. Which country was Texas a part of before it became a state in the United States?",
+    options: [
+        "A. Mexico",
+        "B. France",
+        "C. Spain",
+        "D. The Republic of Texas",
+        "E. The United Kingdom"
+    ],
+    correctAnswer: "A",
+    explanation: "Mexico - Texas was a part of Mexico before it declared independence and later became a state in the United States."
+},
+{
+    question: "95. What was a significant outcome of the landmark Supreme Court case Brown v. Board of Education?",
+    options: [
+        "A. It established the principle of judicial review",
+        "B. It expanded the power of the federal government",
+        "C. It upheld the constitutionality of segregation in public schools",
+        "D. It abolished slavery in the United States",
+        "E. It declared segregation in public schools to be unconstitutional"
+    ],
+    correctAnswer: "E",
+    explanation: "It declared segregation in public schools to be unconstitutional - The significance of Brown v. Board of Education was that it declared segregation in public schools to be unconstitutional, paving the way for the Civil Rights Movement and greater equality for African Americans."
+},
+{
+    question: "96. What was the primary reason for the United States' invasion of Iraq in 2003?",
+    options: [
+        "A. To eliminate Saddam Hussein's weapons of mass destruction",
+        "B. To establish a democracy in the Middle East",
+        "C. To prevent terrorism on American soil",
+        "D. To secure access to Iraq's oil reserves",
+        "E. To retaliate for the 9/11 attacks"
+    ],
+    correctAnswer: "A",
+    explanation: "To eliminate Saddam Hussein's weapons of mass destruction - The primary reason given for the United States' invasion of Iraq in 2003 was to eliminate Saddam Hussein's weapons of mass destruction, though no such weapons were found."
+},
+{
+    question: "97. What is the role of the United States in the United Nations?",
+    options: [
+        "A. The United States is a founding member and holds a permanent seat on the Security Council",
+        "B. The United States is not a member of the United Nations",
+        "C. The United States is a member but does not hold a permanent seat on the Security Council",
+        "D. The United States is a member but only participates in certain committees",
+        "E. The United States is a member but has no voting rights"
+    ],
+    correctAnswer: "A",
+    explanation: "The United States is a founding member and holds a permanent seat on the Security Council - The United States is a founding member of the United Nations and holds a permanent seat on the Security Council, which gives it significant influence in the organization's decision-making process."
+},
+{
+    question: "98. What was the significance of President Harry Truman's decision to drop atomic bombs on Japan?",
+    options: [
+        "A. It was the first time that nuclear weapons had been used in war",
+        "B. It helped to bring an end to World War II",
+        "C. It signaled the beginning of the Cold War",
+        "D. It established the United States as a global superpower",
+        "E. It led to widespread protests and condemnation from the international community"
+    ],
+    correctAnswer: "A",
+    explanation: "It was the first time that nuclear weapons had been used in war - The significance of President Harry Truman's decision to drop atomic bombs on Japan was that it was the first time that nuclear weapons had been used in war, marking a major shift in the way that wars could be fought in the future."
+},
+{
+    question: "99. What is the significance of NATO?",
+    options: [
+        "A. It is an economic alliance between the United States and European countries",
+        "B. It is a military alliance between the United States and European countries",
+        "C. It is a political alliance between the United States and Asian countries",
+        "D. It is a trade agreement between the United States and Latin American countries",
+        "E. It is a social organization for countries around the world"
+    ],
+    correctAnswer: "B",
+    explanation: "It is a military alliance between the United States and European countries - NATO, or the North Atlantic Treaty Organization, is a military alliance between the United States and European countries established after World War II to provide collective defense against the Soviet Union and other potential threats."
+},
+{
+    question: "100. What was a significant outcome of the Bay of Pigs invasion?",
+    options: [
+        "A. The United States successfully overthrew Fidel Castro's government",
+        "B. The United States suffered a humiliating defeat and diplomatic setback",
+        "C. The United States established a permanent military presence in Cuba",
+        "D. The United States won a decisive victory over the Soviet Union",
+        "E. The United States and Cuba signed a peace treaty"
+    ],
+    correctAnswer: "B",
+    explanation: "The United States suffered a humiliating defeat and diplomatic setback - The Bay of Pigs invasion was a failed attempt by the United States to overthrow the communist government of Fidel Castro in Cuba. The invasion was a significant diplomatic setback for the United States, which was seen as a bully by many countries in the international community."
+},
+{
+    question: "101. What was the significance of the Louisiana Purchase?",
+    options: [
+        "A. It doubled the size of the United States",
+        "B. It established the principle of manifest destiny",
+        "C. It secured control of the Mississippi River",
+        "D. It eliminated slavery in the Louisiana Territory",
+        "E. It marked the beginning of the Civil War"
+    ],
+    correctAnswer: "A",
+    explanation: "It doubled the size of the United States - The Louisiana Purchase was a land deal between the United States and France in 1803 that doubled the size of the United States and greatly expanded its territory westward."
+},
+{
+    question: "102. Who were the allies of the United States in World War I?",
+    options: [
+        "A. Germany, Austria-Hungary, and the Ottoman Empire",
+        "B. France, Russia, and Great Britain",
+        "C. Italy, Spain, and Portugal",
+        "D. Japan, Australia, and New Zealand",
+        "E. China, Vietnam, and Cambodia"
+    ],
+    correctAnswer: "B",
+    explanation: "France, Russia, and Great Britain - The United States was allied with France, Russia, and Great Britain in World War I as part of the Triple Entente."
+},
+{
+    question: "103. What was the significance of D-Day in World War II?",
+    options: [
+        "A. It marked the beginning of the war in Europe",
+        "B. It was the largest seaborne invasion in history",
+        "C. It resulted in the capture of Berlin by Allied forces",
+        "D. It was the last major battle of the war",
+        "E. It was a failed attempt to invade Japan"
+    ],
+    correctAnswer: "B",
+    explanation: "It was the largest seaborne invasion in history - D-Day was a massive Allied invasion of Nazi-occupied France on June 6, 1944, and marked the largest seaborne invasion in history. The operation played a significant role in turning the tide of the war in favor of the Allies."
+},
+{
+    question: "104. How did President Gerald Ford come to power?",
+    options: [
+        "A. He was elected in a landslide victory in the presidential election",
+        "B. He was appointed by President Richard Nixon after Nixon's resignation",
+        "C. He was the Vice President under President Lyndon B. Johnson",
+        "D. He was elected by the House of Representatives after the 1968 presidential election resulted in no clear winner",
+        "E. He was a military general who staged a coup and took power"
+    ],
+    correctAnswer: "B",
+    explanation: "He was appointed by President Richard Nixon after Nixon's resignation - Gerald Ford became President of the United States after President Richard Nixon resigned in the wake of the Watergate scandal. Ford was the Vice President at the time and assumed the presidency upon Nixon's resignation."
+},
+{
+    question: "105. What was a significant impact of westward expansion on Native American populations?",
+    options: [
+        "A. It led to the adoption of Native American customs and culture by white settlers",
+        "B. It resulted in the complete eradication of Native American populations",
+        "C. It forced Native American populations off their land and onto reservations",
+        "D. It resulted in peaceful coexistence between white settlers and Native American populations",
+        "E. It had no impact on Native American populations"
+    ],
+    correctAnswer: "C",
+    explanation: "It forced Native American populations off their land and onto reservations - Westward expansion in the United States led to the forced displacement of Native American populations from their ancestral lands and onto reservations, where their cultural traditions and way of life were often suppressed or destroyed."
+},
+{
+    question: "106. What was the significance of the Selma to Montgomery march in 1965?",
+    options: [
+        "A. It resulted in the arrest of Dr. Martin Luther King Jr.",
+        "B. It led to the passage of the Voting Rights Act",
+        "C. It sparked a series of riots across the country",
+        "D. It marked the beginning of the Black Panther Party",
+        "E. It had no significant impact on the civil rights movement"
+    ],
+    correctAnswer: "B",
+    explanation: "It led to the passage of the Voting Rights Act - The Selma to Montgomery march was a series of peaceful protests for voting rights in Alabama in 1965. The violent response of local law enforcement drew national attention and helped to spur the passage of the Voting Rights Act later that year."
+},
+{
+    question: "107. What was the significance of the Mississippi Burning case?",
+    options: [
+        "A. It was the first successful prosecution of a Ku Klux Klan member for a civil rights crime",
+        "B. It was the first successful prosecution of a police officer for a civil rights crime",
+        "C. It was the first successful prosecution of a politician for a civil rights crime",
+        "D. It was the first successful prosecution of a black activist for a civil rights crime",
+        "E. It had no significant impact on the civil rights movement"
+    ],
+    correctAnswer: "A",
+    explanation: "It was the first successful prosecution of a Ku Klux Klan member for a civil rights crime - The Mississippi Burning case refers to the murder of three civil rights workers in Mississippi in 1964. It was a significant case because it resulted in the first successful prosecution of a Ku Klux Klan member for a civil rights crime."
+},
+{
+    question: "108. Who was the first Chief Justice of the United States?",
+    options: [
+        "A. John Jay",
+        "B. John Marshall",
+        "C. Oliver Ellsworth",
+        "D. Roger Taney",
+        "E. Salmon P. Chase"
+    ],
+    correctAnswer: "A",
+    explanation: "John Jay - John Jay was the first Chief Justice of the United States, serving from 1789 to 1795."
+},
+{
+    question: "109. Who was the first woman appointed to the United States Supreme Court?",
+    options: [
+        "A. Ruth Bader Ginsburg",
+        "B. Sonia Sotomayor",
+        "C. Sandra Day O'Connor",
+        "D. Elena Kagan",
+        "E. Amy Coney Barrett"
+    ],
+    correctAnswer: "C",
+    explanation: "Sandra Day O'Connor - Sandra Day O'Connor was the first woman appointed to the United States Supreme Court, serving from 1981 to 2006."
+},
+{
+    question: "110. What was the significance of Marbury v. Madison (1803)?",
+    options: [
+        "A. It established the principle of judicial review",
+        "B. It established the principle of separation of powers",
+        "C. It established the principle of federalism",
+        "D. It established the principle of popular sovereignty",
+        "E. It had no significant impact on the United States legal system"
+    ],
+    correctAnswer: "A",
+    explanation: "It established the principle of judicial review - Marbury v. Madison was a landmark Supreme Court case in 1803 that established the principle of judicial review, which gives the Supreme Court the power to strike down laws that are deemed unconstitutional." 
+},
+{
+    question: "111. What was the significance of the creation of the Treasury Department?",
+    options: [
+        "A. It established the first central bank in the United States",
+        "B. It established the first federal tax system in the United States",
+        "C. It established the first paper currency in the United States",
+        "D. It established the first system of economic regulation in the United States",
+        "E. It had no significant impact on the United States economy"
+    ],
+    correctAnswer: "B",
+    explanation: "It established the first federal tax system in the United States - The creation of the Treasury Department in 1789 was a significant step in the organization of the new federal government under the United States Constitution. It was responsible for establishing the first federal tax system, which included the levying of duties on imports and excises on domestic goods."
+},
+{
+    question: "112. Who was the first Secretary of State of the United States?",
+    options: [
+        "A. Thomas Jefferson",
+        "B. John Adams",
+        "C. James Madison",
+        "D. Alexander Hamilton",
+        "E. Benjamin Franklin"
+    ],
+    correctAnswer: "A",
+    explanation: "Thomas Jefferson - Thomas Jefferson was the first Secretary of State of the United States, serving from 1789 to 1793. As Secretary of State, he was responsible for managing the foreign affairs of the new nation and played a key role in establishing the principles of American foreign policy."
+},
+{
+    question: "113. What was the significance of the hippie movement of the 1960s?",
+    options: [
+        "A. It was a reaction against the civil rights movement",
+        "B. It was a reaction against the Vietnam War",
+        "C. It was a political movement advocating for socialism",
+        "D. It was a religious movement advocating for spiritual enlightenment",
+        "E. It had no significant impact on American culture"
+    ],
+    correctAnswer: "B",
+    explanation: "It was a reaction against the Vietnam War - The hippie movement of the 1960s was a youth countercultural movement that emerged in the United States, primarily as a reaction against the Vietnam War. It was characterized by a rejection of mainstream values, experimentation with drugs, and a focus on peace, love, and personal freedom."
+},
+{
+    question: "114. What was the significance of the Battle of Midway in World War II?",
+    options: [
+        "A. It marked the beginning of the end of the war in Europe",
+        "B. It marked the beginning of the end of the war in Asia",
+        "C. It was the first major battle of the war in the Pacific",
+        "D. It was the last major battle of the war in the Pacific",
+        "E. It had no significant impact on the outcome of the war"
+    ],
+    correctAnswer: "B",
+    explanation: "It marked the beginning of the end of the war in Asia - The Battle of Midway was a significant naval battle fought in the Pacific Theater of World War II. The United States victory at Midway was a turning point in the war and marked the beginning of the end of the Japanese advance in the Pacific."
+},
+{
+question: "115. What was the significance of the creation of Social Security?",
+options: [
+"A. It established the first federal retirement system in the United States",
+"B. It established the first federal welfare system in the United States",
+"C. It established the first federal health care system in the United States",
+"D. It established the first federal disability system in the United States",
+"E. It had no significant impact on the United States social welfare system"
+],
+correctAnswer: "A",
+explanation: "It established the first federal retirement system in the United States - Social Security is a federal program that provides retirement, disability, and survivor benefits to eligible individuals. It was established in 1935 as part of President Franklin D. Roosevelt's New Deal legislation, and it is significant because it established the first federal retirement system in the United States."
+},
+{
+    question: "116. Before becoming states, the colonies were controlled by which country?",
+    options: [
+        "A. Spain",
+        "B. France",
+        "C. England",
+        "D. Portugal",
+        "E. Italy"
+    ],
+    correctAnswer: "C",
+    explanation: "England - Before becoming states, the colonies were controlled by England. England established colonies in North America in the 16th and 17th centuries for economic and political reasons, including the desire to establish a trade network and to expand its empire."
+},
+{
+    question: "117. What was the significance of the Dawes Act of 1887?",
+    options: [
+        "A. It established Indian reservations in the United States",
+        "B. It abolished Indian reservations in the United States",
+        "C. It established a system of Indian boarding schools in the United States",
+        "D. It divided Indian reservations into individual plots of land",
+        "E. It had no significant impact on Indian policy in the United States"
+    ],
+    correctAnswer: "D",
+    explanation: "It divided Indian reservations into individual plots of land - The Dawes Act of 1887 was a federal law that aimed to assimilate Native Americans into American society. The law divided Indian reservations into individual plots of land and granted citizenship to Native Americans who accepted the land. The Dawes Act had a significant impact on Native American life and culture, and its legacy is still felt today."
+},
+{
+    question: "118. What was the significance of the Battle of the Alamo?",
+    options: [
+        "A. It marked the beginning of the Mexican-American War",
+        "B. It marked the end of the Mexican-American War",
+        "C. It was a significant victory for the Texans in the Texas Revolution",
+        "D. It was a significant victory for the Mexicans in the Texas Revolution",
+        "E. It had no significant impact on the outcome of the Texas Revolution"
+    ],
+    correctAnswer: "C",
+    explanation: "It was a significant victory for the Texans in the Texas Revolution - The Battle of the Alamo was a pivotal event in the Texas Revolution. The Texans, led by William Barret Travis, held off the Mexican army for 13 days before being overwhelmed. Although the Texans lost the battle, it became a symbol of resistance and inspired others to fight for Texas independence."
+},
+{
+    question: "119. What was the significance of the creation of the Federal Reserve?",
+    options: [
+        "A. It established the first central bank in the United States",
+        "B. It established the first federal income tax in the United States",
+        "C. It established the first system of economic regulation in the United States",
+        "D. It established the first federal welfare system in the United States",
+        "E. It had no significant impact on the United States economy"
+    ],
+    correctAnswer: "A",
+    explanation: "It established the first central bank in the United States - The Federal Reserve System, also known as the Fed, is the central banking system of the United States. It was established in 1913 as a response to financial panics and economic instability. The Fed has a significant impact on the U.S. economy, including its ability to control interest rates and influence the money supply."
+},
+{
+    question: "120. What was the significance of the Indian Removal Act of 1830?",
+    options: [
+        "A. It established Indian reservations in the United States",
+        "B. It abolished Indian reservations in the United States",
+        "C. It forced Native Americans to relocate to Indian Territory",
+        "D. It provided financial compensation to Native Americans for their land",
+    "E. It had no significant impact on Indian policy in the United States"
+],
+correctAnswer: "C",
+explanation: "It forced Native Americans to relocate to Indian Territory - The Indian Removal Act of 1830 was a federal law that authorized the forced relocation of Native Americans living in the southeastern United States to Indian Territory, which is now Oklahoma. The law resulted in the forced relocation of thousands of Native Americans, including the Cherokee Nation, to Indian Territory. The Indian Removal Act had a devastating impact on Native American communities and culture." 
+}
+
+
+
+
+
+
+
+
+
+
+
+        ]
+
+        function generateQuiz() {
+            const quizForm = document.getElementById('quiz-form');
+            quizData.forEach(function (item, index) {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.dataset.correct = item.correctAnswer;
+
+                const questionText = document.createElement('p');
+                questionText.textContent = item.question;
+                questionDiv.appendChild(questionText);
+
+                item.options.forEach(function (option) {
+                    const radioButton = document.createElement('input');
+                    radioButton.type = 'radio';
+                    radioButton.name = 'q' + (index + 1);
+                    radioButton.value = option.charAt(0);
+                    questionDiv.appendChild(radioButton);
+
+                    const label = document.createElement('label');
+                    label.textContent = option;
+                    questionDiv.appendChild(label);
+
+                    const lineBreak = document.createElement('br');
+                    questionDiv.appendChild(lineBreak);
+                });
+
+                const answerElement = document.createElement('p');
+                answerElement.className = 'answer';
+                answerElement.textContent = 'Answer: ' + item.correctAnswer + '. ' + item.explanation;
+                questionDiv.appendChild(answerElement);
+
+                quizForm.appendChild(questionDiv);
+            });
+        }
+
+        document.getElementById('submit-button').addEventListener('click', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.correct;
+                const userAnswer = question.querySelector(`input[name^="q"]:checked`);
+                const answerElement = question.querySelector('.answer');
+
+                if (userAnswer && userAnswer.value === correctAnswer) {
+                    answerElement.style.color = 'green';
+                    answerElement.innerHTML = 'Correct! ' + answerElement.innerHTML;
+                } else if (userAnswer) {
+                    answerElement.style.color = 'red';
+                    answerElement.innerHTML = 'Incorrect. ' + answerElement.innerHTML;
+                } else {
+                    answerElement.style.color = 'black';
+                }
+
+                answerElement.style.display = 'block';
+            });
+        });
+
+        generateQuiz();
+    </script>
+</body>
+</html>
+
